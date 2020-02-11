@@ -6,6 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = '';
   teste = 10;
+  nome = "Giovanni";   
+    show (x) {
+    this.title  = x
+    console.log (x)
+  }
+  exiba () {
+    alert("aaahhhhh uuuuu ahhhhhh uhhhhhhh");
+  }
+  exibir (){
+    console.log(this.nome)
+  }
+  numero (){
+    console.log(this.nome = "1,2,3,4,5,6")
+  }
+  
 }

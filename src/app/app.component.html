@@ -1,2 +1,14 @@
-<p>Hello</p>
+<h1>Danger !!!!</h1>
 <app-primeiro></app-primeiro>
+{{ title }}
+<br>
+<input type="text" [value]="teste" class="form-control" (blur)= "exiba()" (keyup)="show(texto.value)" #texto />
+<br><br>
+<input type="button" id=meubotao value="Não Clika!" class="btn-danger" (click)="exiba()" ><br><br>
+<input type="text" value="Fome" class="form-control" [(ngModel)]="nome" (keyup)="exibir()" /><br><br>
+<input type="button" id=meubotao value="Mudar valor" class="btn-danger" (click)="numero()" ><br>
+
+
+
+
+
