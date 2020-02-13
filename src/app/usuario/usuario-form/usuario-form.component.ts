@@ -10,9 +10,11 @@ export class UsuarioFormComponent implements OnInit {
 
   usuarios: any = [];
   pokemons: any = [];
-
+  pokemonSelecionado: any = [];
   offset: number = 0;
   limit: number = 0;
+  mostrartexto = "Meu botão";
+  isHabilitado = true;
 
   user : any = [];
 
@@ -32,7 +34,27 @@ export class UsuarioFormComponent implements OnInit {
     );
   }
 
+  inverte(){
+    if (this.isHabilitado == true)
+   this.isHabilitado = false
+    else {
+      this.isHabilitado = true
+    }
+  }
+
+  //poderia ser assim! this.ishabilitado = !this.isHabilitado!
+    
+
   ngOnInit(): void {
+  }
+
+  selecionarPokemon(url){
+    this.usuarioService.getAbilities(url).subscribe(
+      (resposta) => {
+      this.pokemonSelecionado = resposta;
+      console.log (resposta);      
+      }
+    );
   }
   
 

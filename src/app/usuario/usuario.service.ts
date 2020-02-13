@@ -31,5 +31,11 @@ export class UsuarioService {
     return this.http.get("http://dummy.restapiexample.com/api/v1/employees?limit=100");
   }
 
+  getAbilities(url){
+    return this.http.get(url);
+  }
+
+  
+
 
 }
