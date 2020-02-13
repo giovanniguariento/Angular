@@ -1,0 +1,58 @@
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Email</th>
+        <th scope="col">Telefone</th>
+        <th scope="col">Rede Social</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of usuarios">
+        <th scope="row">{{u.id}}</th>
+        <td>{{u.email}}</td>
+        <td>{{u.telefone}}</td>
+        <td>{{u.redesocial}}</td>
+      </tr>
+    <!--Pokemons!!!-->  
+  </table>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Url</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of pokemons.results">
+        <td>{{u.name}}</td>
+        <td>{{u.url}}</td>
+        <td><a [href]= "u.url" target="blank"></a></td>
+      </tr>
+      
+  </table>
+    <input type="button" class="btn-danger" value= "Proxima pagina" (click)="proximaPagina()">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Salario</th>
+        <th scope="col">idade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of user.data">
+        <td>{{u.id}}</td>
+        <td>{{u.employee_name}}</td>
+        <td>{{u.employee_salary}}</td>
+        <td>{{u.employee_age}}</td>
+        <td><a [href]= "u.url" target="blank"></a></td>
+      </tr>
+      
+  </table>
+    
+
+  
+  

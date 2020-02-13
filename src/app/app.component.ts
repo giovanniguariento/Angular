@@ -14,7 +14,7 @@ export class AppComponent {
     console.log (x)
   }
   exiba () {
-    alert("aaahhhhh uuuuu ahhhhhh uhhhhhhh");
+    alert("Alo");
   }
   exibir (){
     console.log(this.nome)
