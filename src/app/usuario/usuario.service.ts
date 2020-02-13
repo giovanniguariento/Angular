@@ -23,8 +23,8 @@ export class UsuarioService {
     //service getall
   }
 
-  getAllPokemons (offset) {
-    return this.http.get("https://pokeapi.co/api/v2/pokemon?offset=" + offset);
+  getAllPokemons (offset , limit) {
+    return this.http.get("https://pokeapi.co/api/v2/pokemon-form?offset=" + offset + "&limit=" + limit );
   }
 
   getAllusers () {
