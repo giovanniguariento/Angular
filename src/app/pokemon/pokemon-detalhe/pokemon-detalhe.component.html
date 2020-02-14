@@ -1,0 +1,29 @@
+<div id="detalhe" class="row d-flex justify-content-center">
+    <div class="card mb-4 mt-4" style="width: auto;">
+
+        <div class="card-body table-dark">
+            <h5 class="card-title text-center">Imagens</h5>
+
+            <table class="table ">
+                <thead>
+                  <tr class="text-center">        
+                    
+                    <th  scope="col">Shiny</th>
+                    <th scope="col">Pokemon</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr >                                        
+                    <td> <img [src]="pokemonDetalhe.sprites?.front_shiny" alt="">  </td>
+                    <td> <img [src]="pokemonDetalhe.sprites?.front_default" alt="">  </td>                    
+                  </tr>                  
+                </tbody>
+              </table>
+        </div>
+
+    </div>    
+</div>
+
+<!-- {{ pokemonDetalhe | json }} -->
+    
+

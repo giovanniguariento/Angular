@@ -9,8 +9,6 @@ import { UsuarioService } from '../usuario.service';
 export class UsuarioFormComponent implements OnInit {
 
   usuarios: any = [];
-  pokemons: any = [];
-  pokemonSelecionado: any ;
   offset: number = 0;
   limit: number = 10;
   mostrartexto = "Meu botão";
@@ -20,12 +18,7 @@ export class UsuarioFormComponent implements OnInit {
 
   constructor(private usuarioService: UsuarioService) {
     this.usuarios = this.usuarioService.getAll();
-    this.usuarioService.getAllPokemons(this.offset, this.limit).subscribe(
-      (success) => {
-        console.log(success)
-        this.pokemons = success;
-      },
-    );
+   
     this.user = this.usuarioService.getAll();
     this.usuarioService.getAllusers().subscribe(
       (success) => {
@@ -48,37 +41,4 @@ export class UsuarioFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selecionarPokemon(url){
-    this.usuarioService.getAbilities(url).subscribe(
-      (resposta) => {
-      this.pokemonSelecionado = resposta;
-      console.log (resposta);      
-      }
-    );
-  }
-
-
-  trocarLimit(value) {
-    
-       this.limit = value;
-       this.usuarioService.getAllPokemons(this.offset, this.limit).subscribe(
-        (success) => {
-          this.pokemons = success;
-  
-        }
-      );
-  }
-  
-
-  proximaPagina() {
-    this.offset += 20;
-  
-   
-    this.usuarioService.getAllPokemons(this.offset, this.limit).subscribe(
-      (success) => {
-        this.pokemons = success;
-
-      }
-    );
-  }
 }

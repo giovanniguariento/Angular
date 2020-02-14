@@ -22,18 +22,10 @@ export class UsuarioService {
     ];
     //service getall
   }
-
-  getAllPokemons (offset , limit) {
-    return this.http.get("https://pokeapi.co/api/v2/pokemon-form?offset=" + offset + "&limit=" + limit );
-  }
-
   getAllusers () {
     return this.http.get("http://dummy.restapiexample.com/api/v1/employees?limit=100");
   }
 
-  getAbilities(url){
-    return this.http.get(url);
-  }
 
   
 
