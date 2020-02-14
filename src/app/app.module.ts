@@ -8,13 +8,17 @@ import { SegundoComponent } from './segundo/segundo.component';
 import { FormsModule} from '@angular/forms';
 import { UsuarioModule } from './usuario/usuario.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MenuComponent } from './menu/menu.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PrimeiroComponent,
-    SegundoComponent
+    SegundoComponent,
+    MenuComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,7 @@
 <p grifarParagrafo>Teste de diretiva</p>
+{{ '2020-02-14' | date: 'dd/MM/yyyy' }}
+
+
 <div class="text-center">
 <input type="button" class="btn-secondary m-5 btn-lg disabled" [class.disabled]="isHabilitado" [value]="mostrartexto">
 <input type="button" class="btn-secondary m-5 btn-lg disabled" (click)="inverte()" value="Inverter">
@@ -21,7 +24,11 @@
         <td>{{u.telefone}}</td>
         <td>{{u.redesocial}}</td>
       </tr>
-      <app-usuariodetalhe *ngIf= "pokemonSelecionado != null" [pokemonDetalhe]= "pokemonSelecionado"></app-usuariodetalhe>
+
+
+
+      <app-usuariodetalhe *ngIf= "pokemonSelecionado" 
+      [pokemonDetalhe]= "pokemonSelecionado"></app-usuariodetalhe>
     <!--Pokemons!!!-->  
   </table>
   <table class="table">

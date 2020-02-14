@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
 import { UsuariodetalheComponent } from './usuariodetalhe/usuariodetalhe.component';
 import { GrifarParagrafoDirective } from './diretivas/grifar-paragrafo.directive';
+import { DataPipe } from './pipes/data.pipe';
 
 
 
 @NgModule({
-  declarations: [UsuarioFormComponent, UsuariodetalheComponent, GrifarParagrafoDirective],
+  declarations: [UsuarioFormComponent, UsuariodetalheComponent, GrifarParagrafoDirective, DataPipe],
   imports: [
     CommonModule
   ],
