@@ -13,7 +13,7 @@ meuForm: FormGroup;
   constructor(private formBuilder : FormBuilder) { 
     this.meuForm = this.formBuilder.group({
         emailInput: ['', [ Validators.email, Validators.required ]],
-        senhaInput: ['',[]]
+        senhaInput: ['',[ Validators.required]]
       }
       
     );
@@ -33,11 +33,14 @@ meuForm: FormGroup;
   }
 
   isError(value){
-    let meuCampo = this.getCampo('emailInput');
+    let meuCampo = this.getCampo(value);
     return ( meuCampo.valid == false && meuCampo.touched == true);     
   }
 
-
+  isSuccess(value){
+    let meuCampo = this.getCampo(value);
+    return ( meuCampo.valid == true && meuCampo.touched == true);    
+  }
 
 }
 
