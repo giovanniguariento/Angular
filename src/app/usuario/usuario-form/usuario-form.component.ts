@@ -17,11 +17,9 @@ export class UsuarioFormComponent implements OnInit {
   mostrartexto = "Meu botão";
   isHabilitado = true;
 
-  user: any = [];
-  endereco: any = [];
-
   constructor(
     private cepService: UsuarioService,
+    private usuarioService: UsuarioService,
     private formBuilder: FormBuilder
   ) {
     this.addusuarios = this.formBuilder.group({
@@ -47,8 +45,8 @@ export class UsuarioFormComponent implements OnInit {
       (success: any) => {
         console.log(success);
         this.addusuarios.patchValue({
-          cidadeInput : success.localidade,
-          logradouroInput : success.logradouro,
+          cidadeInput: success.localidade,
+          logradouroInput: success.logradouro,
           bairroInput: success.bairro,
           estadoInput: success.uf
         })
@@ -63,7 +61,28 @@ export class UsuarioFormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.addusuarios)
-  }
+    let obj = {
+      nome: this.addusuarios.value.nomeInput,
+      email: this.addusuarios.value.emailInput,
+      senha: this.addusuarios.value.senhaInput,
+      tipo_usuario: 1,
+      cep: this.addusuarios.value.cepInput,
+      logradouro: this.addusuarios.value.logradouroInput,
+      numero: this.addusuarios.value.numeroInput,
+      complemento: this.addusuarios.value.complementoInput,
+      cidade: this.addusuarios.value.cidadeInput,
+      bairro: this.addusuarios.value.bairroInput,
+      estado: this.addusuarios.value.estadoInput
+    }
+    this.usuarioService.createUsuario(obj).subscribe(
+      (success: any) => {
+        console.log(success)
+      },
+
+      (error) => {
+        console.log(error);
+      }
+    )};
 
 
 
