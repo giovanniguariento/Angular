@@ -1,6 +1,7 @@
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../usuario.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-usuario-form',
@@ -20,11 +21,11 @@ export class UsuarioFormComponent implements OnInit {
   user : any = [];
   cep :number;
   endereco : any = [];
-  usuarioService: any;
 
   constructor(
-    private enderecoService: UsuarioService, 
-    private formBuilder : FormBuilder
+    private usuarioService: UsuarioService, 
+    private formBuilder : FormBuilder,
+    private toastr: ToastrService
     
     ) { 
     this.addusuarios = this.formBuilder.group({
@@ -45,7 +46,7 @@ export class UsuarioFormComponent implements OnInit {
   getEndereco(value) {
     this.cep = value
     console.log(this.cep)
-    this.enderecoService.getCep(this.cep).subscribe(
+    this.usuarioService.getCep(this.cep).subscribe(
         (response : any) => {
         console.log (response);
         this.addusuarios.patchValue(
@@ -80,15 +81,15 @@ export class UsuarioFormComponent implements OnInit {
       }
 
     this.usuarioService.postDados(obj).subscribe(
-      (response) => {
-        
+      (response : any) => {
+
+        console.log (response);
+        this.toastr.success ('Usuário inserido com sucesso!' + response.id);
+        this.limpar()
       },
     )
-
-
+    
   }
-
-  
 
   inverte(){
     if (this.isHabilitado == true)
@@ -98,10 +99,33 @@ export class UsuarioFormComponent implements OnInit {
     }
   }
 
+  limpar(){
+
+    let obj = {
+      
+      nameInput : '',
+      emailInput : '',
+      senhaInput : '',
+      tipo_usuario: 1,
+      cepInput : '',
+      logradouroInput : '',
+      numeroInput : '',
+      complementoInput: '',
+      cidadeInput : '',
+      bairroInput : '',
+      estadoInput : ''
+    
+  }
+
+  this.addusuarios.patchValue(obj)
+}
+
   //poderia ser assim! this.ishabilitado = !this.isHabilitado!
     
 
   ngOnInit(): void {
   }
+
+  
 
 }

@@ -35,6 +35,10 @@ export class UsuarioService {
 
   }
 
+  getDados () {
+    return this.http.get("http://cursos.grandeporte.com.br:8080/usuarios");
+  }
+
   
 
 

@@ -1,3 +1,4 @@
+import { UsuarioListComponent } from './usuario-list/usuario-list.component';
 import { CicloComponent } from './ciclo/ciclo.component';
 import { DataFormComponent } from './data-form/data-form.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
@@ -10,7 +11,8 @@ const routes: Routes = [
     {path : 'usuarios', component : UsuarioFormComponent},
     {path : 'usuarios/template-form', component : TemplateFormComponent},
     {path : 'usuarios/data-form', component : DataFormComponent},
-    {path : 'usuarios/ciclo', component : CicloComponent}
+    {path : 'usuarios/ciclo', component : CicloComponent},
+    {path : 'usuarios/usuario-list', component : UsuarioListComponent}
 ] ;
 
 @NgModule({
