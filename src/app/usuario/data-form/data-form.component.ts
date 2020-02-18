@@ -14,7 +14,9 @@ meuForm: FormGroup;
     this.meuForm = this.formBuilder.group({
         emailInput: ['', [ Validators.email, Validators.required ]],
         senhaInput: ['',[]]
-      });
+      }
+      
+    );
 
   }
 
@@ -22,8 +24,28 @@ meuForm: FormGroup;
   }
 
   onSubmit(){
-    console.log (this.meuForm)}
+    console.log (this.meuForm)
   }
+  
+  getCampo(value){
+    return this.meuForm.get( value );
+
+  }
+
+  isError(value){
+    let meuCampo = this.getCampo('emailInput');
+    return ( meuCampo.valid == false && meuCampo.touched == true);     
+  }
+
+
+
+}
+
+  
+
+
+
+  
 
 
 

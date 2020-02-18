@@ -5,12 +5,15 @@
       formControlName="emailInput">
     <small id="emailHelp" class="form-text text-muted">You will share your email with anyone else :)</small>
   </div>
-<app-debug-campos [campoFilho]="meuForm.controls.emailInput" > </app-debug-campos>
+<app-debug-campos [campoFilho]="getCampo('emailInput')" > </app-debug-campos>
 
   <div class="form-group">
     <label for="exampleInputPassword1" >Senha</label>
     <input type="password" class="form-control" placeholder="Password" formControlName="senhaInput">
   </div>
+
+  <app-debug-campos [campoFilho]="getCampo('senhaInput')" > </app-debug-campos>
+  
   <div class="form-check">
     <input type="checkbox" class="form-check-input">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
