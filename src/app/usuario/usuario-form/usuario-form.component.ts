@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../usuario.service';
 
@@ -8,6 +9,8 @@ import { UsuarioService } from '../usuario.service';
 })
 export class UsuarioFormComponent implements OnInit {
 
+  addusuarios: FormGroup;
+
   usuarios: any = [];
   offset: number = 0;
   limit: number = 10;
@@ -16,7 +19,7 @@ export class UsuarioFormComponent implements OnInit {
 
   user : any = [];
 
-  constructor(private usuarioService: UsuarioService) {
+  constructor(private usuarioService: UsuarioService, private formBuilder : FormBuilder) {
     this.usuarios = this.usuarioService.getAll();
    
     this.user = this.usuarioService.getAll();
@@ -25,7 +28,26 @@ export class UsuarioFormComponent implements OnInit {
         this.user = success;
       },
     );
+    this.addusuarios = this.formBuilder.group({
+      nameInput: ['', []],
+      senhaInput: ['',[]],
+      emailInput: ['',[]],
+      cepInput: ['',[]],
+      cidadeInput: ['',[]],
+      logradouroInput: ['',[]],
+      numeroInput: ['',[]],
+      complementoInput: ['',[]],
+      bairroInput: ['',[]],
+      estadoInput: ['',[]]
+    });
+
   }
+
+  onSubmit() {
+    console.log (this.addusuarios)
+  }
+
+  
 
   inverte(){
     if (this.isHabilitado == true)
