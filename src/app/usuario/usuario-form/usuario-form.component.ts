@@ -20,6 +20,7 @@ export class UsuarioFormComponent implements OnInit {
   user : any = [];
   cep :number;
   endereco : any = [];
+  usuarioService: any;
 
   constructor(
     private enderecoService: UsuarioService, 
@@ -62,7 +63,29 @@ export class UsuarioFormComponent implements OnInit {
 
     }
   onSubmit() {
-    console.log (this.addusuarios)
+    console.log (this.addusuarios);
+
+      let obj = {
+        nome: this.addusuarios.value.nomeInput,
+        email: this.addusuarios.value.emailInput,
+        senha: this.addusuarios.value.senhaInput,
+        tipo_usuario: 1,
+        cep: this.addusuarios.value.cepInput,
+        logradouro: this.addusuarios.value.logradouroInput,
+        numero: this.addusuarios.value.numeroInput,
+        complemento: this.addusuarios.value.complementoInput,
+        cidade: this.addusuarios.value.cidadeInput,
+        bairro: this.addusuarios.value.bairroInput,
+        estado: this.addusuarios.value.estadoInput
+      }
+
+    this.usuarioService.postDados(obj).subscribe(
+      (response) => {
+        
+      },
+    )
+
+
   }
 
   
