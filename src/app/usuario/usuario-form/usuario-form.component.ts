@@ -18,12 +18,14 @@ export class UsuarioFormComponent implements OnInit {
   isHabilitado = true;
 
   user: any = [];
-  cep: number;
   endereco: any = [];
 
-  constructor(private enderecoService: UsuarioService, private formBuilder: FormBuilder) {
+  constructor(
+    private cepService: UsuarioService,
+    private formBuilder: FormBuilder
+  ) {
     this.addusuarios = this.formBuilder.group({
-      nameInput: ['', []],
+      nomeInput: ['', []],
       senhaInput: ['', []],
       emailInput: ['', []],
       cepInput: ['', []],
@@ -37,14 +39,23 @@ export class UsuarioFormComponent implements OnInit {
 
   }
 
-  getEndereco(value) {
-    this.cep = value
-    console.log(this.cep)
-    this.enderecoService.getCep(this.cep).subscribe(
-      (success) => {
+  getEndereco() {
+    let cep = this.addusuarios.value.cepInput;
+    console.log(cep)
+
+    this.cepService.getCep(cep).subscribe(
+      (success: any) => {
         console.log(success);
-        this.endereco = success;
+        this.addusuarios.patchValue({
+          cidadeInput : success.localidade,
+          logradouroInput : success.logradouro,
+          bairroInput: success.bairro,
+          estadoInput: success.uf
+        })
       },
+      (error) => {
+        console.log(error);
+      }
 
     );
   }

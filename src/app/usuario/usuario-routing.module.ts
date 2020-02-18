@@ -1,3 +1,4 @@
+import { CicloComponent } from './ciclo/ciclo.component';
 import { DataFormComponent } from './data-form/data-form.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { NgModule, Component } from '@angular/core';
@@ -8,7 +9,8 @@ import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
 const routes: Routes = [
     {path : 'usuarios', component : UsuarioFormComponent},
     {path : 'usuarios/template-form', component : TemplateFormComponent},
-    {path : 'usuarios/data-form', component : DataFormComponent}
+    {path : 'usuarios/data-form', component : DataFormComponent},
+    {path : 'usuarios/ciclos', component : CicloComponent}
 ] ;
 
 @NgModule({

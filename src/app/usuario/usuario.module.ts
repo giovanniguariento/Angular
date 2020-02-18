@@ -8,11 +8,12 @@ import { DataPipe } from './pipes/data.pipe';
 import { UsuarioRoutingModule } from './usuario-routing.module';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CicloComponent } from './ciclo/ciclo.component';
 
 
 
 @NgModule({
-  declarations: [UsuarioFormComponent, GrifarParagrafoDirective, DataPipe, TemplateFormComponent, DataFormComponent],
+  declarations: [UsuarioFormComponent, GrifarParagrafoDirective, DataPipe, TemplateFormComponent, DataFormComponent, CicloComponent],
   imports: [
     CommonModule,
     UsuarioRoutingModule,
