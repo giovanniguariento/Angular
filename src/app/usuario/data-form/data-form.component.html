@@ -2,18 +2,25 @@
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email"
-      formControlName="emailInput">
+      formControlName="emailInput" [class.is-invalid]="isError('emailInput')" [class.is-valid]="isSuccess('emailInput')">
     <small id="emailHelp" class="form-text text-muted">You will share your email with anyone else :)</small>
   </div>
-  <app-debug-campos [campoFilho]="meuForm.controls.emailInput"></app-debug-campos>
+  <app-debug-campos [campoFilho]="getCampo('emailInput')"></app-debug-campos>
+  <app-show-erros [isErrorFilho]="isError('emailInput')" mensagem = "O email é obrigatorio"></app-show-erros>
 
-<!-- <p>validou : {{ meuForm.controls.emailInput.valid }}</p>
+  <p>{{ isError('emailInput') }}</p>
+
+  <!-- <p>validou : {{ meuForm.controls.emailInput.valid }}</p>
   <p>tocou no campo :{{ meuForm.controls.emailInput.touched }}</p>--> 
 
   <div class="form-group">
     <label for="exampleInputPassword1">Senha</label>
-    <input type="password" class="form-control" placeholder="Password" formControlName="senhaInput">
+    <input type="password" class="form-control" placeholder="Password" formControlName="senhaInput"
+    [class.is-invalid]="isError('senhaInput')" [class.is-valid]="isSuccess('senhaInput')">
   </div>
+  <app-debug-campos [campoFilho]="getCampo('senhaInput')"></app-debug-campos>
+  <app-show-erros [isErrorFilho]="isError('senhaInput')" mensagem = "A Senha é obrigatorio"></app-show-erros>
+
   <div class="form-check">
     <input type="checkbox" class="form-check-input">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
