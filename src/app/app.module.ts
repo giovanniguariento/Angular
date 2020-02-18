@@ -1,3 +1,5 @@
+import { ProdutosModule } from './produtos/produtos.module';
+import { ProdutosComponent } from './produtos/produtos/produtos.component';
 import { PokemonModule } from './pokemon/pokemon.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -27,7 +29,8 @@ import { HomeComponent } from './home/home.component';
     ReactiveFormsModule,
     UsuarioModule,
     HttpClientModule,
-    PokemonModule
+    PokemonModule,
+    ProdutosModule
     
   ],
   providers: [],

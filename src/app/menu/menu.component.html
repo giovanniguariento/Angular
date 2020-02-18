@@ -10,7 +10,10 @@
           <a class="nav-link" href="home">Inicio <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/usuarios']" routerLinkActive="active" >Usuarios</a>
+          <a class="nav-link" [routerLink]="['/usuarios']" routerLinkActive="active" >Cadastro de Usuários</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/produtos']" routerLinkActive="active" >Cadastro de produtos</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" [routerLink]="['/pokemons']" routerLinkActive="active" >Pokemons</a>
@@ -26,15 +29,13 @@
             Mais Detalhes
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" >Action</a>
+            <a class="dropdown-item" >Another action</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" >Something else here</a>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
+        
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
