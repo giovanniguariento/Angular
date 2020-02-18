@@ -26,6 +26,9 @@ export class UsuarioService {
     return this.http.get("http://dummy.restapiexample.com/api/v1/employees?limit=100");
   }
 
+  getCep(cep){
+    return this.http.get("https://viacep.com.br/ws/"+ cep + "/json");
+  }
 
   
 

@@ -18,16 +18,10 @@ export class UsuarioFormComponent implements OnInit {
   isHabilitado = true;
 
   user : any = [];
+  cep :number;
+  endereco : any = [];
 
-  constructor(private usuarioService: UsuarioService, private formBuilder : FormBuilder) {
-    this.usuarios = this.usuarioService.getAll();
-   
-    this.user = this.usuarioService.getAll();
-    this.usuarioService.getAllusers().subscribe(
-      (success) => {
-        this.user = success;
-      },
-    );
+  constructor(private enderecoService: UsuarioService, private formBuilder : FormBuilder) { 
     this.addusuarios = this.formBuilder.group({
       nameInput: ['', []],
       senhaInput: ['',[]],
@@ -43,6 +37,18 @@ export class UsuarioFormComponent implements OnInit {
 
   }
 
+  getEndereco(value) {
+    this.cep = value
+    console.log(this.cep)
+    this.enderecoService.getCep(this.cep).subscribe(
+        (success) => {
+        console.log (success);
+        this.endereco = success;
+      },
+      
+    );
+
+    }
   onSubmit() {
     console.log (this.addusuarios)
   }
