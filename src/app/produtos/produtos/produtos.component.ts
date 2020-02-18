@@ -1,5 +1,5 @@
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-produtos',
@@ -23,7 +23,7 @@ export class ProdutosComponent implements OnInit {
   }
 
 
-  onSubmit(){
+  onCadastrar(){
     console.log (this.produtos)
   }
 
