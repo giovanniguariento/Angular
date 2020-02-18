@@ -17,22 +17,22 @@ export class UsuarioFormComponent implements OnInit {
   mostrartexto = "Meu botão";
   isHabilitado = true;
 
-  user : any = [];
-  cep :number;
-  endereco : any = [];
+  user: any = [];
+  cep: number;
+  endereco: any = [];
 
-  constructor(private enderecoService: UsuarioService, private formBuilder : FormBuilder) { 
+  constructor(private enderecoService: UsuarioService, private formBuilder: FormBuilder) {
     this.addusuarios = this.formBuilder.group({
       nameInput: ['', []],
-      senhaInput: ['',[]],
-      emailInput: ['',[]],
-      cepInput: ['',[]],
-      cidadeInput: ['',[]],
-      logradouroInput: ['',[]],
-      numeroInput: ['',[]],
-      complementoInput: ['',[]],
-      bairroInput: ['',[]],
-      estadoInput: ['',[]]
+      senhaInput: ['', []],
+      emailInput: ['', []],
+      cepInput: ['', []],
+      cidadeInput: ['', []],
+      logradouroInput: ['', []],
+      numeroInput: ['', []],
+      complementoInput: ['', []],
+      bairroInput: ['', []],
+      estadoInput: ['', []]
     });
 
   }
@@ -41,30 +41,31 @@ export class UsuarioFormComponent implements OnInit {
     this.cep = value
     console.log(this.cep)
     this.enderecoService.getCep(this.cep).subscribe(
-        (success) => {
-        console.log (success);
+      (success) => {
+        console.log(success);
         this.endereco = success;
       },
-      
-    );
 
-    }
-  onSubmit() {
-    console.log (this.addusuarios)
+    );
   }
 
-  
 
-  inverte(){
+  onSubmit() {
+    console.log(this.addusuarios)
+  }
+
+
+
+  inverte() {
     if (this.isHabilitado == true)
-   this.isHabilitado = false
+      this.isHabilitado = false
     else {
       this.isHabilitado = true
     }
   }
 
   //poderia ser assim! this.ishabilitado = !this.isHabilitado!
-    
+
 
   ngOnInit(): void {
   }
