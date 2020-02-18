@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-data-form',
@@ -12,7 +12,7 @@ meuForm: FormGroup;
 
   constructor(private formBuilder : FormBuilder) { 
     this.meuForm = this.formBuilder.group({
-        emailInput: ['', []],
+        emailInput: ['', [ Validators.email, Validators.required ]],
         senhaInput: ['',[]]
       });
 

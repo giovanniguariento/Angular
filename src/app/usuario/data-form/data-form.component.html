@@ -1,10 +1,12 @@
-<form [formGroup]="meuForm" (submit)="onSubmit()">
+<form [formGroup]="meuForm" class='mt-5' (submit)="onSubmit()">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email"
       formControlName="emailInput">
     <small id="emailHelp" class="form-text text-muted">You will share your email with anyone else :)</small>
   </div>
+<app-debug-campos [campoFilho]="meuForm.controls.emailInput" > </app-debug-campos>
+
   <div class="form-group">
     <label for="exampleInputPassword1" >Senha</label>
     <input type="password" class="form-control" placeholder="Password" formControlName="senhaInput">
