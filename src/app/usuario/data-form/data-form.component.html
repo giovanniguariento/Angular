@@ -5,8 +5,13 @@
       formControlName="emailInput">
     <small id="emailHelp" class="form-text text-muted">You will share your email with anyone else :)</small>
   </div>
+  <app-debug-campos [campoFilho]="meuForm.controls.emailInput"></app-debug-campos>
+
+<!-- <p>validou : {{ meuForm.controls.emailInput.valid }}</p>
+  <p>tocou no campo :{{ meuForm.controls.emailInput.touched }}</p>--> 
+
   <div class="form-group">
-    <label for="exampleInputPassword1" >Senha</label>
+    <label for="exampleInputPassword1">Senha</label>
     <input type="password" class="form-control" placeholder="Password" formControlName="senhaInput">
   </div>
   <div class="form-check">
