@@ -1,4 +1,4 @@
-<h1 class="mt-4 text-center">Formulário de Cadastro</h1>
+<h1 class="mt-4 text-center">{{ textoFormulario }} </h1>
 
 <form class="mb-3" [formGroup]="addusuarios" (submit)="onSubmit()">
   <div class="form-row mt-5">
@@ -52,7 +52,7 @@
   </div>
   <div class="form-row">
     <div class="float-right mt-4 mb-3">
-      <button type="submit" class="btn btn-block btn-primary">Cadastrar</button>
+      <button type="submit" class="btn btn-block btn-primary">{{ botaoFormulario }}</button>
     </div>
   </div>
 </form>

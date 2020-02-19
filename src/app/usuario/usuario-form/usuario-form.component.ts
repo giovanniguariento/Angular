@@ -10,7 +10,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./usuario-form.component.css']
 })
 export class UsuarioFormComponent implements OnInit {
-
+  textoFormulario: any;
+  botaoFormulario: any;
   addusuarios: FormGroup;
 
   usuarios: any = [];
@@ -40,6 +41,8 @@ export class UsuarioFormComponent implements OnInit {
       (rota) => {
         if (rota.id) {
           console.log("editar");
+          this.textoFormulario = "Formulario De Atualizar";
+          this.botaoFormulario = "Atualizar";
           this.isEdicao = true;
           this.idUsuario = rota.id;
 
@@ -68,6 +71,8 @@ export class UsuarioFormComponent implements OnInit {
 
         } else {
           console.log("criacao");
+          this.textoFormulario = "Cadastramento de Usuarios";
+          this.botaoFormulario = "Salvar";
           this.isEdicao = false;
         }
 
@@ -140,7 +145,7 @@ export class UsuarioFormComponent implements OnInit {
           console.log(response);
           this.toastr.success('Usuário inserido com sucesso!' + response.id);
           this.router.navigate(['/usuarios']);
-          this.limpar()
+          this.limpar();
         },
       )
 
