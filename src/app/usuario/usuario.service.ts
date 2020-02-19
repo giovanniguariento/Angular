@@ -43,8 +43,14 @@ export class UsuarioService {
     return this.http.delete("http://cursos.grandeporte.com.br:8080/usuarios/" + id_usuario);
   }
 
-  getOneUsuario(id_usuario){
+  getOneUsuario(id_usuario) {
     return this.http.get("http://cursos.grandeporte.com.br:8080/usuarios/" + id_usuario);
   }
+
+  updateUsuario(id_usuario, obj) {
+    return this.http.post("http://cursos.grandeporte.com.br:8080/usuarios/" + id_usuario, obj);
+  }
+
+
 
 }

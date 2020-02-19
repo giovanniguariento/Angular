@@ -18,6 +18,8 @@ export class UsuarioFormComponent implements OnInit {
   limit: number = 10;
   mostrartexto = "Meu botão";
   isHabilitado = true;
+  isEdicao = false;
+  idUsuario = 0;
 
   user: any = [];
   cep: number;
@@ -38,6 +40,9 @@ export class UsuarioFormComponent implements OnInit {
       (rota) => {
         if (rota.id) {
           console.log("editar");
+          this.isEdicao = true;
+          this.idUsuario = rota.id;
+
           this.usuarioService.getOneUsuario(rota.id).subscribe(
             (sucess: any) => {
               let obj = {
@@ -51,8 +56,7 @@ export class UsuarioFormComponent implements OnInit {
                 complementoInput: sucess.complemento,
                 logradouroInput: sucess.logradouro,
                 bairroInput: sucess.bairro,
-                estadoInput: sucess.estado,
-
+                estadoInput: sucess.estado
               }
               this.addusuarios.patchValue(obj);
 
@@ -64,6 +68,7 @@ export class UsuarioFormComponent implements OnInit {
 
         } else {
           console.log("criacao");
+          this.isEdicao = false;
         }
 
       }
@@ -128,19 +133,29 @@ export class UsuarioFormComponent implements OnInit {
       estado: this.addusuarios.value.estadoInput
     }
 
-    this.usuarioService.postDados(obj).subscribe(
-      (response: any) => {
+    if (this.isEdicao == false) {
 
-        console.log(response);
-        this.toastr.success('Usuário inserido com sucesso!' + response.id);
-        this.router.navigate(['/usuarios']);
-        this.limpar()
-      },
-    )
+      this.usuarioService.postDados(obj).subscribe(
+        (response: any) => {
+          console.log(response);
+          this.toastr.success('Usuário inserido com sucesso!' + response.id);
+          this.router.navigate(['/usuarios']);
+          this.limpar()
+        },
+      )
+
+    } else {
+      this.usuarioService.updateUsuario(this.idUsuario, obj).subscribe(
+
+        (response: any) => {
+          console.log(response);
+          this.toastr.success('Alterado com sucesso!' + response.id);
+          this.router.navigate(['/usuarios']);
+        },
+      );
+    }
 
   }
-
-
 
   inverte() {
     if (this.isHabilitado == true)
