@@ -25,9 +25,10 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" [routerLink]="['/usuarios']" >Cadastro de Clientes</a>
+            <div class="dropdown-divider"></div>
             <a class="dropdown-item" [routerLink]="['/produtos']" >Cadastro de Produtos</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" >Something else here</a>
+            <a class="dropdown-item"[routerLink]= "['/usuarios/usuario-list']"> Lista de Clientes</a>
           </div>
         </li>
         
