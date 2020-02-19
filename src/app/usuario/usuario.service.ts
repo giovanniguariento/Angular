@@ -1,14 +1,20 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
+  url = environment.api + 'usuarios/';
+
   constructor(private http: HttpClient) {
 
   }
+
+
 
   getAll() {
     return [
@@ -31,24 +37,24 @@ export class UsuarioService {
   }
 
   postDados(obj) {
-    return this.http.post("http://cursos.grandeporte.com.br:8080/usuarios", obj);
+    return this.http.post(this.url, obj);
 
   }
 
   getDados() {
-    return this.http.get("http://cursos.grandeporte.com.br:8080/usuarios");
+    return this.http.get(this.url);
   }
 
   deleteUsuario(id_usuario) {
-    return this.http.delete("http://cursos.grandeporte.com.br:8080/usuarios/" + id_usuario);
+    return this.http.delete(this.url + id_usuario);
   }
 
   getOneUsuario(id_usuario) {
-    return this.http.get("http://cursos.grandeporte.com.br:8080/usuarios/" + id_usuario);
+    return this.http.get(this.url + id_usuario);
   }
 
   updateUsuario(id_usuario, obj) {
-    return this.http.post("http://cursos.grandeporte.com.br:8080/usuarios/" + id_usuario, obj);
+    return this.http.post(this.url + id_usuario, obj);
   }
 
 
