@@ -8,9 +8,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class DataFormComponent implements OnInit {
 
-meuForm: FormGroup;
+  meuForm: FormGroup;
 
-  constructor(private formBuilder : FormBuilder) { 
+  constructor(private formBuilder: FormBuilder) {
     this.meuForm = this.formBuilder.group({
         emailInput: ['', [ Validators.email, Validators.required ]],
         senhaInput: ['',[ Validators.required]]
@@ -44,11 +44,7 @@ meuForm: FormGroup;
 
 }
 
-  
 
-
-
-  
 
 
 
