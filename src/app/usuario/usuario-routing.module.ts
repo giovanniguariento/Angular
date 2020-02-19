@@ -9,7 +9,8 @@ import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
 
 const routes: Routes = [
     {path : 'usuarios', component : UsuarioListComponent},
-    {path : 'usuarios/new', component : UsuarioFormComponent},    
+    {path : 'usuarios/new', component : UsuarioFormComponent},
+    {path : 'usuarios/edit/:id', component : UsuarioFormComponent},     
     {path : 'usuarios/template-form', component : TemplateFormComponent},
     {path : 'usuarios/data-form', component : DataFormComponent},
     {path : 'usuarios/ciclo', component : CicloComponent}

@@ -2,7 +2,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../usuario.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-usuario-form',
@@ -27,11 +27,53 @@ export class UsuarioFormComponent implements OnInit {
     private usuarioService: UsuarioService,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private activeRoute: ActivatedRoute
 
   ) {
+
+    console.log(this.activeRoute);
+
+    this.activeRoute.params.subscribe(
+      (rota) => {
+        if (rota.id) {
+          console.log("editar");
+          this.usuarioService.getOneUsuario(rota.id).subscribe(
+            (sucess: any) => {
+              let obj = {
+
+                nomeInput: sucess.nome,
+                emailInput: sucess.email,
+                senhaInput: sucess.senha,
+                cepInput: sucess.cep,
+                numeroInput: sucess.numero,
+                cidadeInput: sucess.cidade,
+                complementoInput: sucess.complemento,
+                logradouroInput: sucess.logradouro,
+                bairroInput: sucess.bairro,
+                estadoInput: sucess.estado,
+
+              }
+              this.addusuarios.patchValue(obj);
+
+            },
+            (error) => {
+
+            }
+          )
+
+        } else {
+          console.log("criacao");
+        }
+
+      }
+    )
+
+
+
+
     this.addusuarios = this.formBuilder.group({
-      nameInput: ['', []],
+      nomeInput: ['', []],
       senhaInput: ['', []],
       emailInput: ['', []],
       cepInput: ['', []],

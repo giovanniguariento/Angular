@@ -6,7 +6,7 @@
     
 
 
-    <table class="table table-dark mt-5 ">
+    <table class="table table-dark mt-5 table-responsive">
         <thead>
             <tr>
                 <th scope="col">Id</th>
@@ -35,7 +35,7 @@
                 <td> {{ u.estado }}</td>
                 <td> {{ u.numero }}</td>
                 <td><button type="button" class="btn btn-danger btn-sm text-center" (click)="deletar(u.id)">Delete</button></td>
-                <td><button type="button" class="btn btn-success btn-sm text-center"(click)="editar() ">Editar</button></td>
+                <td><button type="button" class="btn btn-success btn-sm text-center"(click)="editar(u.id) ">Editar</button></td>
 
             </tr>
 

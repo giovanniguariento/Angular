@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsuarioService } from './../usuario.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +14,8 @@ export class UsuarioListComponent implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -47,7 +49,8 @@ export class UsuarioListComponent implements OnInit {
       (error) => { console.log(error) }
     );
   }
-  editar() {
+  editar(id_usuario_edit) {
+    this.router.navigate(['/usuarios/edit/', id_usuario_edit])
 
   }
 
