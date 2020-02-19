@@ -1,3 +1,4 @@
+import { browser } from 'protractor';
 import { ProdutosModule } from './produtos/produtos.module';
 import { ProdutosComponent } from './produtos/produtos/produtos.component';
 import { PokemonModule } from './pokemon/pokemon.module';

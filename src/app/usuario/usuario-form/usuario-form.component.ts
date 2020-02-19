@@ -63,8 +63,8 @@ export class UsuarioFormComponent implements OnInit {
       },
 
     );
-
   }
+
   onSubmit() {
     console.log(this.addusuarios);
 
