@@ -1,3 +1,4 @@
+import { browser } from 'protractor';
 import { ProdutosModule } from './produtos/produtos.module';
 import { ProdutosComponent } from './produtos/produtos/produtos.component';
 import { PokemonModule } from './pokemon/pokemon.module';
@@ -12,6 +13,8 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { HomeComponent } from './home/home.component';
     UsuarioModule,
     HttpClientModule,
     PokemonModule,
-    ProdutosModule
+    ProdutosModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
+
     
   ],
   providers: [],
