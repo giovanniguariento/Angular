@@ -30,7 +30,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    UsuarioModule,
     HttpClientModule,
     PokemonModule,
     ProdutosModule,

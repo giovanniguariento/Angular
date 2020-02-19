@@ -23,6 +23,8 @@ export class UsuarioFormComponent implements OnInit {
   endereco: any = [];
   isEdicao = false;
   idUsuario = 0;
+  textoH1: any = ' ' ; 
+  textoBotao:  any = ' ';
 
   constructor(
     private usuarioService: UsuarioService,
@@ -39,6 +41,8 @@ export class UsuarioFormComponent implements OnInit {
       (rota) => {
         if (rota.id) {
           console.log("edição");
+          this.textoBotao = "Atualizar";
+          this.textoH1 = "Atualizar Cadastro";
           this.isEdicao = true;
           this.idUsuario = rota.id;
 
@@ -62,6 +66,8 @@ export class UsuarioFormComponent implements OnInit {
           )
         }
         else{
+          this.textoBotao = "Cadastrar";
+          this.textoH1 = "Formulário de Cadastro";
           console.log("criação");
           this.isEdicao = false;
         }
@@ -174,6 +180,7 @@ export class UsuarioFormComponent implements OnInit {
 
     this.addusuarios.patchValue(obj)
   }
+  
 
   //poderia ser assim! this.ishabilitado = !this.isHabilitado!
 
