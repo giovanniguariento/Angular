@@ -39,7 +39,8 @@ export class UsuarioService {
     return this.http.get("http://cursos.grandeporte.com.br:8080/usuarios");
   }
 
-  
-
+  deleteDados (id_usuario) {
+    return this.http.delete("http://cursos.grandeporte.com.br:8080/usuarios/" + id_usuario);
+  }
 
 }

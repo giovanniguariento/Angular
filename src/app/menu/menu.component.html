@@ -20,15 +20,23 @@
             <a class="nav-link" [routerLink]="['/usuarios/data-form']" routerLinkActive="active" >Data Form</a>
           </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Cadastro
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Clientes
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" [routerLink]="['/usuarios']" >Cadastro de Clientes</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" [routerLink]="['/produtos']" >Cadastro de Produtos</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item"[routerLink]= "['/usuarios/usuario-list']"> Lista de Clientes</a>
+              <a class="dropdown-item"[routerLink]= "['/usuarios/usuario-list']"> Lista de Clientes</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Produtos
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <a class="dropdown-item" [routerLink]="['/produtos']" >Cadastro de Produtos</a>
+           <div class="dropdown-divider"></div>
+           <a class="dropdown-item" [routerLink]="['']" >Lista de Produtos</a>
           </div>
         </li>
         
