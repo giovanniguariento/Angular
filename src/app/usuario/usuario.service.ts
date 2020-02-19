@@ -47,5 +47,9 @@ getOneUsuario (id_usuario) {
   return this.http.get("http://cursos.grandeporte.com.br:8080/usuarios/" + id_usuario);
 }
 
+patchUsuario (id_usuario, obj) {
+  return this.http.post ("http://cursos.grandeporte.com.br:8080/usuarios/" + id_usuario, obj);
+}
+
 
 }
