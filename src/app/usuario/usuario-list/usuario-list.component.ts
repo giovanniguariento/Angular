@@ -1,6 +1,7 @@
 import { UsuarioService } from './../usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario-list',
@@ -11,7 +12,7 @@ export class UsuarioListComponent implements OnInit {
 
   dados : any = [];
 
-  constructor(private usuarioService: UsuarioService, private toastr : ToastrService) { }
+  constructor(private usuarioService: UsuarioService, private toastr : ToastrService, private router : Router) { }
 
   ngOnInit(): void {
     this.getDados();
@@ -27,9 +28,10 @@ export class UsuarioListComponent implements OnInit {
     );
   }
 
-  editar(){
-
+  editar(id_usuario_edit){
+    this.router.navigate(['/usuarios/edit/', id_usuario_edit])
   }
+
   deletarDados(id_usuario_list){
     this.usuarioService.deleteDados(id_usuario_list).subscribe(
       (success) => {

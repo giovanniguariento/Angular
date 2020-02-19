@@ -33,7 +33,7 @@
             <td> {{ u.estado }}</td>
             <td> {{ u.numero }}</td>
             <td><button type="button"(click)="deletarDados(u.id)" class="btn btn-danger btn-sm text-center ">Delete</button></td>
-            <td><button type="button" (click)="editar()" class="btn btn-primary btn-sm text-center">Edit</button></td>
+            <td><button type="button" (click)="editar(u.id)" class="btn btn-primary btn-sm text-center">Edit</button></td>
             
         </tr>
 

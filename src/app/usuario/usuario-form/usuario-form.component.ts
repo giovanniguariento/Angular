@@ -2,7 +2,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../usuario.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-usuario-form',
@@ -27,9 +27,42 @@ export class UsuarioFormComponent implements OnInit {
     private usuarioService: UsuarioService,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
 
   ) {
+
+    console.log ( this.activatedRoute )
+
+    this.activatedRoute.params.subscribe(
+      (rota) => {
+        if (rota.id){
+          console.log ("edição");
+          
+          this.usuarioService.getOneUsuario( rota.id ).subscribe(
+            (response : any) => {
+              this.addusuarios.patchValue(
+                {
+                  cidadeInput: response.localidade,
+                  logradouroInput: response.logradouro,
+                  bairroInput: response.bairro,
+                  estadoInput: response.estado,
+                  nameInput : response.nome,
+                  senhaInput : response.senha,
+                  emailInput: response.email,
+                  cepInput: response.cep,
+                  numeroInput: response.numero,
+                  complementoInput: response.complemento
+                  
+                }
+              );
+            },
+          )
+        }
+        else 
+        console.log("criação");
+      }
+    )
     this.addusuarios = this.formBuilder.group({
       nameInput: ['', []],
       senhaInput: ['', []],
@@ -56,7 +89,7 @@ export class UsuarioFormComponent implements OnInit {
             cidadeInput: response.localidade,
             logradouroInput: response.logradouro,
             bairroInput: response.bairro,
-            estadoInput: response.uf
+            estadoInput: response.estado
           }
         )
         this.endereco = response;
