@@ -18,40 +18,46 @@ export class UsuarioFormComponent implements OnInit {
   mostrartexto = "Meu botão";
   isHabilitado = true;
 
+  user : any = [];
+  cep :number;
+  endereco : any = [];
+
   constructor(
-    private cepService: UsuarioService,
-    private usuarioService: UsuarioService,
-    private formBuilder: FormBuilder,
+    private usuarioService: UsuarioService, 
+    private formBuilder : FormBuilder,
     private toastr: ToastrService
-  ) {
+    
+    ) { 
     this.addusuarios = this.formBuilder.group({
-      nomeInput: ['', []],
-      senhaInput: ['', []],
-      emailInput: ['', []],
-      cepInput: ['', []],
-      cidadeInput: ['', []],
-      logradouroInput: ['', []],
-      numeroInput: ['', []],
-      complementoInput: ['', []],
-      bairroInput: ['', []],
-      estadoInput: ['', []]
+      nameInput: ['', [ ]],
+      senhaInput: ['',[ ]],
+      emailInput: ['',[ ]],
+      cepInput: ['',[ ]],
+      cidadeInput: ['',[ ]],
+      logradouroInput: ['',[ ]],
+      numeroInput: ['',[ ]],
+      complementoInput: ['',[ ]],
+      bairroInput: ['',[ ]],
+      estadoInput: ['',[ ]]
     });
 
   }
 
-  getEndereco() {
-    let cep = this.addusuarios.value.cepInput;
-    console.log(cep)
-
-    this.cepService.getCep(cep).subscribe(
-      (success: any) => {
-        console.log(success);
-        this.addusuarios.patchValue({
-          cidadeInput: success.localidade,
-          logradouroInput: success.logradouro,
-          bairroInput: success.bairro,
-          estadoInput: success.uf
-        })
+  getEndereco(value) {
+    this.cep = value
+    console.log(this.cep)
+    this.usuarioService.getCep(this.cep).subscribe(
+        (response : any) => {
+        console.log (response);
+        this.addusuarios.patchValue(
+          {
+            cidadeInput : response.localidade,
+            logradouroInput  : response.logradouro,
+            bairroInput : response.bairro,
+            estadoInput : response.uf
+          }
+        )
+        this.endereco = response;
       },
       (error) => {
         console.log(error);
@@ -62,31 +68,32 @@ export class UsuarioFormComponent implements OnInit {
 
 
   onSubmit() {
-    console.log(this.addusuarios)
-    let obj = {
-      nome: this.addusuarios.value.nomeInput,
-      email: this.addusuarios.value.emailInput,
-      senha: this.addusuarios.value.senhaInput,
-      tipo_usuario: 1,
-      cep: this.addusuarios.value.cepInput,
-      logradouro: this.addusuarios.value.logradouroInput,
-      numero: this.addusuarios.value.numeroInput,
-      complemento: this.addusuarios.value.complementoInput,
-      cidade: this.addusuarios.value.cidadeInput,
-      bairro: this.addusuarios.value.bairroInput,
-      estado: this.addusuarios.value.estadoInput
-    }
-    this.usuarioService.createUsuario(obj).subscribe(
-      (success: any) => {
-        console.log(success);
-        this.toastr.success('Usuário inserido com sucesso : ' + success.id);
-      },
+    console.log (this.addusuarios);
 
-      (error) => {
-        console.log(error);
+      let obj = {
+        nome: this.addusuarios.value.nomeInput,
+        email: this.addusuarios.value.emailInput,
+        senha: this.addusuarios.value.senhaInput,
+        tipo_usuario: 1,
+        cep: this.addusuarios.value.cepInput,
+        logradouro: this.addusuarios.value.logradouroInput,
+        numero: this.addusuarios.value.numeroInput,
+        complemento: this.addusuarios.value.complementoInput,
+        cidade: this.addusuarios.value.cidadeInput,
+        bairro: this.addusuarios.value.bairroInput,
+        estado: this.addusuarios.value.estadoInput
       }
+
+    this.usuarioService.postDados(obj).subscribe(
+      (response : any) => {
+
+        console.log (response);
+        this.toastr.success ('Usuário inserido com sucesso!' + response.id);
+        this.limpar()
+      },
     )
-  };
+    
+  }
 
 
 
@@ -98,10 +105,33 @@ export class UsuarioFormComponent implements OnInit {
     }
   }
 
+  limpar(){
+
+    let obj = {
+      
+      nameInput : '',
+      emailInput : '',
+      senhaInput : '',
+      tipo_usuario: 1,
+      cepInput : '',
+      logradouroInput : '',
+      numeroInput : '',
+      complementoInput: '',
+      cidadeInput : '',
+      bairroInput : '',
+      estadoInput : ''
+    
+  }
+
+  this.addusuarios.patchValue(obj)
+}
+
   //poderia ser assim! this.ishabilitado = !this.isHabilitado!
 
 
   ngOnInit(): void {
   }
+
+  
 
 }

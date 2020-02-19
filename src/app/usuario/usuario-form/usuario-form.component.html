@@ -18,7 +18,8 @@
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="inputZip" >CEP</label>
-      <input type="text" class="form-control" formControlName="cepInput" (blur)="getEndereco()" >
+      <input type="number" class="form-control" formControlName="cepInput" placeholder="Coloque o Seu Código Postal" 
+      #pegacep (blur)="getEndereco(pegacep.value)"  >
     </div>
     <div class="form-group col-md-8">
       <label for="inputPassword4">Cidade</label>
@@ -28,7 +29,11 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Logradouro</label>
+<<<<<<< HEAD
       <input type="text" class="form-control" placeholder="Nome da Rua" formControlName="logradouroInput">
+=======
+      <input type="text" class="form-control" placeholder="Nome da Rua" formControlName="logradouroInput" >
+>>>>>>> master
     </div>
     <div class="form-group col-md-2">
       <label for="inputEmail4">Número</label>

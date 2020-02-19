@@ -67,7 +67,10 @@ export class CicloComponent
   
   contador = 0;
   
+  
   onClick(){
     this.contador ++;
   }
+
+
 }

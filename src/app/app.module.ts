@@ -36,7 +36,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProdutosModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule
-
     
   ],
   providers: [],

@@ -30,12 +30,16 @@ export class UsuarioService {
     return this.http.get("https://viacep.com.br/ws/" + cep + "/json");
   }
 
-  createUsuario(obj) {
-    return this.http.post("http://cursos.grandeporte.com.br:8080/usuarios/", obj);
+  postDados(obj){
+    return this.http.post ("http://cursos.grandeporte.com.br:8080/usuarios", obj);
 
   }
 
+  getDados () {
+    return this.http.get("http://cursos.grandeporte.com.br:8080/usuarios");
+  }
 
+  
 
 
 }
