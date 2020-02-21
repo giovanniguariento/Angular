@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,16 +6,20 @@ import { Injectable } from '@angular/core';
 })
 export class LoginService {
 
-  isAutenticado : boolean = false;
+  isAutenticado: boolean = false;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  isUsuarioAutenticado () {
+  isUsuarioAutenticado() {
     return this.isAutenticado;
   }
 
 
-  setIsAutenticado(value){
+  setIsAutenticado(value) {
     this.isAutenticado = value;
+  }
+
+  postDados(obj) {
+    return this.http.post("http://localhost:8080/usuarios/auth", obj);
   }
 }
