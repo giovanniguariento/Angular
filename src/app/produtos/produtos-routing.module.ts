@@ -1,3 +1,4 @@
+import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { ProdutosModule } from './produtos.module';
 import { AuthGuardService } from './../shared/guards/auth-guard.service';
 import { ListarProdutosComponent } from './listar-produtos/listar-produtos.component';
@@ -12,7 +13,9 @@ const routes: Routes = [
   {path : 'produtos/list', component : ListarProdutosComponent},
   {path : 'edit/:id', component : ProdutosComponent},
   {path : 'produtos/list-adm', component : ListaAdmComponent,
-      canActivate : [ AuthGuardService ]}
+      canActivate : [ AuthGuardService ]},
+  {path : 'produtos/carrinho', component : CarrinhoComponent}
+
   
 ];
 
