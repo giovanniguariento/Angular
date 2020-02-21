@@ -12,7 +12,8 @@ export class UsuarioListComponent implements OnInit {
 
   dados : any = [];
 
-  constructor(private usuarioService: UsuarioService, private toastr : ToastrService, private router : Router) { }
+  constructor(private usuarioService: UsuarioService, private toastr : ToastrService, 
+    private router : Router) { }
 
   ngOnInit(): void {
     this.getDados();
@@ -27,7 +28,7 @@ export class UsuarioListComponent implements OnInit {
       (error)=> {console.log (error)}
     );
   }
-
+ 
   editar(id_usuario_edit){
     this.router.navigate(['/usuarios/edit/', id_usuario_edit])
   }

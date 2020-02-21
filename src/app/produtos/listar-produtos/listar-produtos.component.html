@@ -1,0 +1,16 @@
+<div class="row">
+  <div *ngFor="let u of dados" class="col-md-4 mb-4 mt-5">
+    <div  class="card h-100">
+      <img class="card-img-top" src="assets/download.jpg" alt="Card image cap">
+      <h4 class="card-header">{{u.nome}}</h4>
+      <div class="card-body">
+        <p class="card-text">{{u.preco}}</p>
+        <div class="dropdown-divider"></div>
+        <p class="card-text">{{u.descricao}}</p>
+      </div>
+      <div class="card-footer">
+        <a href="#" class="btn btn-primary" >Compre Agora</a>
+      </div>
+    </div>
+  </div>
+</div>

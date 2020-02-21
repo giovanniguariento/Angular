@@ -38,7 +38,7 @@ export class UsuarioService {
 
   }
 
-  getDados () {
+  getDados () {  
     return this.http.get(this.url);
   }
 

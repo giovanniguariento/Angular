@@ -9,20 +9,15 @@
         <li class="nav-item">
           <a class="nav-link" href="home">Inicio <span class="sr-only">(current)</span></a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active" >Login</a>
+        </li>
       
         <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/pokemons']" routerLinkActive="active" >Pokemons</a>
+            <a class="nav-link" [routerLink]="['/produtos/list']" routerLinkActive="active" >Produtos</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active" >Login</a>
-          </li>s
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/usuarios/template-form']" routerLinkActive="active" >Template Form</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/usuarios/data-form']" routerLinkActive="active" >Data Form</a>
-          </li>
-        <li class="nav-item dropdown">
+          
+           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Clientes
           </a>
@@ -34,14 +29,14 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Produtos
+            Admin
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
            <a class="dropdown-item" [routerLink]="['/produtos']" >Cadastro de Produtos</a>
            <div class="dropdown-divider"></div>
-           <a class="dropdown-item" [routerLink]="['']" >Lista de Produtos</a>
+           <a class="dropdown-item" [routerLink]="['produtos/list/adm']" >Lista de Produtos</a>
            <div class="dropdown-divider"></div>
-           <a class="dropdown-item" [routerLink]="['/admin']" >ADM</a>
+           <a class="dropdown-item" [routerLink]="['/admin']" >Atualizar Produtos</a>
           </div>
         </li>
         
