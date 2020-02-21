@@ -1,8 +1,8 @@
-import { Router, ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './../shared/guards/login.service';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -13,19 +13,19 @@ export class LoginComponent implements OnInit {
 
   meuForm: FormGroup;
 
-  constructor(private loginService: LoginService, 
-    private formBuilder: FormBuilder, 
-    private toastr: ToastrService, 
-    private router: Router) { }
-
-  ngOnInit(): void {
-
+  constructor(private loginService: LoginService, private formBuilder: FormBuilder,private router : Router, private toastr : ToastrService) { 
+    
     this.meuForm = this.formBuilder.group({
       usuario: ['', []],
       senha: ['', []]
     }
 
     );
+  }
+
+  ngOnInit(): void {
+
+    
   }
 
 
@@ -39,31 +39,39 @@ export class LoginComponent implements OnInit {
 
   }
 
-  onSubmit(obj) {
-    this.loginService.postDados(obj).subscribe(
-      (success) => {
-        console.log(success);
-        if(success == true){
-          this.loginService.setIsAutenticado(success);
-          this.toastr.success('Logado com sucesso'); 
-          this.router.navigate(['admin/home']);
-        }else{
-          this.toastr.success('Usuario e senha errado');
-          this.router.navigate(['/usuarios']);
-        }   
-      },
-      (error) => {
-        console.log(error)
-        this.loginService.setIsAutenticado(error);
-        this.toastr.success('Usuario e senha errado');
-        this.router.navigate(['/usuarios']);
-      }
-    )
+  onSubmit() {
 
+     console.log (this.meuForm)
+    let obj = {
+      email: this.meuForm.value.usuario,
+      senha: this.meuForm.value.senha,
+    }
+
+    this.loginService.login(obj).subscribe(
+      (success) => {
+
+        this.loginService.setIsAutenticado(success)
+        
+        if (success == true){   
+        this.router.navigate(['/admin/home'])
+        this.toastr.success ('Logado com Sucesso!')
+        //this.router.navigate(['admin/home']);
+      }
+      else { this.router.navigate(['/admin/home'])
+      this.toastr.error ('Usuário não encontrado')  }
+
+      }
+
+    );
   }
 
   getCampo(value) {
     return this.meuForm.get(value);
+
+  }
+
+  verificarLogin() {
+
 
   }
 

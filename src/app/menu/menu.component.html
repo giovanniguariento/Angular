@@ -11,29 +11,22 @@
         </li>
       
         <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/usuarios']" routerLinkActive="active" >Usuarios</a>
+            <a class="nav-link" [routerLink]="['/usuarios/usuario-list']" routerLinkActive="active" >Usuarios</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['/admin']" routerLinkActive="active" >Admin</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active" >Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/usuarios/template-form']" routerLinkActive="active" >Template Form</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active" >Login</a>
-          </li>
-          
+          </li>          
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Clientes
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" [routerLink]="['/usuarios/new']" >Cadastro de Clientes</a>
+            <a class="dropdown-item" [routerLink]="['/usuarios/']" >Cadastro de Usuarios</a>
             <div class="dropdown-divider"></div>
-              <a class="dropdown-item"[routerLink]= "['/usuarios/usuario-list']"> Lista de Clientes</a>
+              <a class="dropdown-item"[routerLink]= "['/usuarios/usuario-list']"> Lista de Usuarios</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -43,7 +36,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
            <a class="dropdown-item" [routerLink]="['/produtos']" >Cadastro de Produtos</a>
            <div class="dropdown-divider"></div>
-           <a class="dropdown-item" [routerLink]="['']" >Lista de Produtos</a>
+           <a class="dropdown-item" [routerLink]="['/produtos/produtos-list']" >Lista de Produtos</a>
            <div class="dropdown-divider"></div>
            <a class="dropdown-item" [routerLink]="['/admin']" >ADM</a>
           </div>

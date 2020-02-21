@@ -1,25 +1,29 @@
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { AdminService } from '../admin.service';
+import { ProdutosService } from '../produtos.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-produtos-list',
+  templateUrl: './produtos-list.component.html',
+  styleUrls: ['./produtos-list.component.css']
 })
-export class HomeComponent implements OnInit {
+export class ProdutosListComponent implements OnInit {
+
   dados: any = [];
 
-  constructor( private adminService: AdminService,
+  constructor(
+    private produtosService: ProdutosService,
     private toastr: ToastrService,
-    private router: Router,) { }
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
     this.getDados();
   }
+
   private getDados() {
-    this.adminService.getDados().subscribe(
+    this.produtosService.getDados().subscribe(
       (success) => {
         console.log(success);
         this.dados = success;

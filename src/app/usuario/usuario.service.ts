@@ -8,7 +8,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsuarioService {
 
-  url = environment.api + "usuarios/";
+  urlUsuario = environment.api + "usuarios/";
+  urlProduto = environment.api + "produtos/";
 
   constructor(private http: HttpClient) {
 
@@ -37,26 +38,28 @@ export class UsuarioService {
   }
 
   postDados(obj) {
-    return this.http.post(this.url, obj);
+    return this.http.post(this.urlUsuario, obj);
   }
 
-  getOneUsuario(id_usuario) {
-    return this.http.get(this.url + id_usuario);
-  }
-
+ 
   getDados() {
-    return this.http.get(this.url);
+    return this.http.get(this.urlUsuario);
   }
 
   deleteDados(id_usuario) {
-    return this.http.delete(this.url + id_usuario);
+    return this.http.delete(this.urlUsuario + id_usuario);
   }
 
-  patchUsuario(id_usuario, obj) {
-    return this.http.post(this.url + id_usuario, obj);
-  }
+getOneUsuario (id_usuario) {
+  return this.http.get(this.urlUsuario + id_usuario);
+}
+
+patchUsuario (id_usuario, obj) {
+  return this.http.post (this.urlUsuario + id_usuario, obj);
+}
+
 
   login(id_usuario, obj) {
-    return this.http.post(this.url + id_usuario, obj);
+    return this.http.post(this.urlUsuario + id_usuario, obj);
   }
 }

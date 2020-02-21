@@ -4,25 +4,19 @@
   <div class="form-row">
   <div class="form-group col-md-6">
     <label for="exampleFormControlInput1">Nome do Produto</label>
-    <input type="text" class="form-control" placeholder="Escreva o nome" formControlName="nameInput">
+    <input type="text" class="form-control" placeholder="Escreva o nome" formControlName="nome">
   </div>
-  <div class="form-group col-md-2 ">
-    <label for="exampleFormControlInput1">Valor</label>
-    <input type="text" class="form-control" placeholder="Escreva o Valor" formControlName="princeInput">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlFile1">Foto principal</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1" >
+  <div class="form-group col-md-6 ">
+    <label for="exampleFormControlInput1">Preço</label>
+    <input type="text" class="form-control" placeholder="Escreva o preço" formControlName="preco">
   </div>
   
 </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Descrição</label>
-    <textarea class="form-control" placeholder="Descreva o produto" rows="3" formControlName="textInput">
-
-    </textarea>
+    <input type="text"class="form-control" placeholder="Descreva o produto" formControlName="descricao">
   </div>
 
-  <button type="submit" class="btn btn-block btn-primary">Submit</button>
+  <button type="submit" class="btn btn-block btn-primary">Cadastrar</button>
 
 </form>

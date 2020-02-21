@@ -1,10 +1,15 @@
+import { environment } from './../../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+
+  url = environment.api + "usuarios/";
+  urlProduto = environment.api + "produtos/";
 
   isAutenticado: boolean = false;
 
@@ -19,7 +24,14 @@ export class LoginService {
     this.isAutenticado = value;
   }
 
-  postDados(obj) {
-    return this.http.post("http://localhost:8080/usuarios/auth", obj);
+
+  login(obj) {
+    return this.http.post(this.url + "auth/", obj);
   }
+
+  postDados(obj) {
+    return this.http.post(this.urlProduto, obj);
+  }
+
+
 }
