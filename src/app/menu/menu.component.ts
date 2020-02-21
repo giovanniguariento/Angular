@@ -1,3 +1,4 @@
+import { LoginService } from './../shared/guards/login.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginService : LoginService) { }
 
   ngOnInit(): void {
+  }
+
+  desLogar(){
+    this.loginService.setIsAutenticado( false );
+
   }
 
 }

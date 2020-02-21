@@ -5,16 +5,16 @@ import { Injectable } from '@angular/core';
 })
 export class LoginService {
 
-  isAutenticado: boolean = false;
+  isAutenticado : boolean = false;
 
   constructor() { }
 
-  isUsuarioAutenticado(){
+  isUsuarioAutenticado () {
     return this.isAutenticado;
   }
+
 
   setIsAutenticado(value){
     this.isAutenticado = value;
   }
-
 }

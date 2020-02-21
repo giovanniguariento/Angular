@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './../shared/guards/login.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,15 +9,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private LoginService: LoginService) { }
+  meuForm : FormGroup;
+
+  constructor(private loginService : LoginService, private formBuilder : FormBuilder) { }
 
   ngOnInit(): void {
+    
+    this.meuForm = this.formBuilder.group({
+    usuario: ['', [ ]],
+    senha: ['',[ ]]
+  }
+  
+);
   }
 
-  login(){
-    this.LoginService.setIsAutenticado(true);
+
+  logar(){
+    this.loginService.setIsAutenticado( true );
+
   }
-  logout(){
-    this.LoginService.setIsAutenticado(false);
+
+  desLogar(){
+    this.loginService.setIsAutenticado( false );
+
   }
+
+  onSubmit(){
+    console.log (this.meuForm)
+  }
+  
+  getCampo(value){
+    return this.meuForm.get( value );
+
+  }
+
+  verificarLogin(){
+   
+
+  }
+
+
+
 }
