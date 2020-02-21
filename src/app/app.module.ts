@@ -32,7 +32,6 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    //UsuarioModule,
     HttpClientModule,
     PokemonModule,
     ProdutosModule,

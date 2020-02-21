@@ -12,11 +12,7 @@ export class UsuarioListComponent implements OnInit {
 
   dados: any = [];
 
-  constructor(
-    private usuarioService: UsuarioService,
-    private toastr: ToastrService,
-    private router: Router
-  ) { }
+  constructor(private usuarioService: UsuarioService, private toastr : ToastrService, private router : Router) { }
 
   ngOnInit(): void {
     this.getDados();
@@ -32,27 +28,19 @@ export class UsuarioListComponent implements OnInit {
     );
   }
 
-  deletar(id_usuario_list) {
-    this.usuarioService.deleteUsuario(id_usuario_list).subscribe(
+  editar(id_usuario_edit){
+    this.router.navigate(['/usuarios/edit/', id_usuario_edit])
+  }
+
+  deletarDados(id_usuario_list){
+    this.usuarioService.deleteDados(id_usuario_list).subscribe(
       (success) => {
-        console.log(success);
-
-        this.getDados();
-
-        let index = this.dados.findIndex((elemento) => { return elemento.id == id_usuario_list });
-
-        this.dados.splice(index, 1);
-
-        this.toastr.success('Usuário deletado com sucesso!');
-
-      },
-      (error) => { console.log(error) }
+        this.toastr.success ('Usuario deletado');
+        this.getDados()
+      }
     );
   }
-  editar(id_usuario_edit) {
-    this.router.navigate(['/usuarios/edit/', id_usuario_edit])
 
-  }
 
 
 }

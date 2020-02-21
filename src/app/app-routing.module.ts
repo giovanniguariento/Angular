@@ -6,21 +6,11 @@ import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
-  { path: ' ', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  {
-    path: 'usuarios',
-    loadChildren: () => import('./usuario/usuario.module')
-      .then(m => m.UsuarioModule)
-  },
-
-  {
-    path: 'admin',
-    loadChildren: () => import('./admin/admin.module')
-      .then(m => m.AdminModule),
-    canActivate: [AuthGuardService]
-  }
+  {path:  '', component : HomeComponent },
+  {path: 'home' , component : HomeComponent},
+  {path : 'usuarios',
+    loadChildren : () => import('./usuario/usuario.module')
+      .then(m => m.UsuarioModule)}
 ];
 
 @NgModule({

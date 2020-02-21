@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsuarioService {
 
-  url = environment.api + 'usuarios/';
+  url = environment.api + "usuarios/";
 
   constructor(private http: HttpClient) {
 
@@ -38,25 +38,22 @@ export class UsuarioService {
 
   postDados(obj) {
     return this.http.post(this.url, obj);
-
-  }
-
-  getDados() {
-    return this.http.get(this.url);
-  }
-
-  deleteUsuario(id_usuario) {
-    return this.http.delete(this.url + id_usuario);
   }
 
   getOneUsuario(id_usuario) {
     return this.http.get(this.url + id_usuario);
   }
 
-  updateUsuario(id_usuario, obj) {
-    return this.http.post(this.url + id_usuario, obj);
+  getDados() {
+    return this.http.get(this.url);
+  }
+
+  deleteDados(id_usuario) {
+    return this.http.delete(this.url + id_usuario);
   }
 
 
-
+  patchUsuario(id_usuario, obj) {
+    return this.http.post(this.url + id_usuario, obj);
+  }
 }
