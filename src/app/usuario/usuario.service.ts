@@ -54,5 +54,9 @@ patchUsuario (id_usuario, obj) {
   return this.http.post (this.url + id_usuario, obj);
 }
 
+login (id_usuario, obj){
+  return this.http.post (this.url + id_usuario, obj);
+}
+
 
 }
