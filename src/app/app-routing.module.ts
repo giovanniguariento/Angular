@@ -1,3 +1,4 @@
+import { ProdutosModule } from './produtos/produtos.module';
 import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './shared/guards/auth-guard.service';
 import { NgModule, Component } from '@angular/core';
@@ -14,8 +15,8 @@ const routes: Routes = [
   
   {path : 'admin', loadChildren : () => import('./admin/admin.module')
       .then(m => m.AdminModule),
-      canActivate : [ AuthGuardService ]
-}
+      canActivate : [ AuthGuardService ] },
+      
 ];
 
 @NgModule({

@@ -1,3 +1,4 @@
+import { MenuService } from './../shared/services/menu.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './../shared/guards/login.service';
@@ -13,8 +14,14 @@ export class LoginComponent implements OnInit {
 
   meuForm: FormGroup;
 
-  constructor(private loginService: LoginService, private formBuilder: FormBuilder,private router : Router, private toastr : ToastrService) { 
-    
+  constructor(
+    private loginService: LoginService, 
+    private formBuilder: FormBuilder, 
+    private router: Router, 
+    private toastr: ToastrService,
+    private menuService : MenuService
+    ) {
+
     this.meuForm = this.formBuilder.group({
       usuario: ['', []],
       senha: ['', []]
@@ -25,13 +32,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
   }
-
 
   logar() {
     this.loginService.setIsAutenticado(true);
-
   }
 
   desLogar() {
@@ -41,7 +45,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
 
-     console.log (this.meuForm)
+    console.log(this.meuForm)
     let obj = {
       email: this.meuForm.value.usuario,
       senha: this.meuForm.value.senha,
@@ -50,15 +54,25 @@ export class LoginComponent implements OnInit {
     this.loginService.login(obj).subscribe(
       (success) => {
 
-        this.loginService.setIsAutenticado(success)
+        if (success == true){
+          this.menuService.menuSubject.next ( false );
+        }
+        else {
+          this.menuService.menuSubject.next ( true );
+        }
+
+        this.loginService.setIsAutenticado( success );
         
-        if (success == true){   
-        this.router.navigate(['/admin/home'])
-        this.toastr.success ('Logado com Sucesso!')
-        //this.router.navigate(['admin/home']);
-      }
-      else { this.router.navigate(['/admin/home'])
-      this.toastr.error ('Usuário não encontrado')  }
+
+        if (success == true) {
+          this.router.navigate(['/admin/home'])
+          this.toastr.success('Logado com Sucesso!')
+          //this.router.navigate(['admin/home']);
+        }
+        else {
+          this.router.navigate(['/admin/home'])
+          this.toastr.error('Usuário não encontrado')
+        }
 
       }
 
@@ -71,7 +85,6 @@ export class LoginComponent implements OnInit {
   }
 
   verificarLogin() {
-
 
   }
 

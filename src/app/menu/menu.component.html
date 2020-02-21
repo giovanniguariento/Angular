@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="home">Pokemon</a>
+    <a class="navbar-brand" href="home">CompreAki</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -16,6 +16,9 @@
         <li class="nav-item">
             <a class="nav-link" [routerLink]="['/produtos/list']" routerLinkActive="active" >Produtos</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/carrinho']" routerLinkActive="active" >Carrinho</a>
+          </li>
           
            <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,21 +30,22 @@
               <a class="dropdown-item"[routerLink]= "['/usuarios/usuario-list']"> Lista de Clientes</a>
           </div>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" #botaoAdm [hidden]="!escondeBotao()">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Admin
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
            <a class="dropdown-item" [routerLink]="['/produtos']" >Cadastro de Produtos</a>
            <div class="dropdown-divider"></div>
-           <a class="dropdown-item" [routerLink]="['produtos/list/adm']" >Lista de Produtos</a>
+           <a class="dropdown-item" [routerLink]="['produtos/list-adm']" >Lista de Produtos</a>
            <div class="dropdown-divider"></div>
-           <a class="dropdown-item" [routerLink]="['/admin']" >Atualizar Produtos</a>
+           <a class="dropdown-item" [routerLink]="['/produtoAdm']" >Atualizar Produtos</a>
           </div>
         </li>
         
       </ul>
       <form class="form-inline my-2 my-lg-0">
+        <button [routerLink]="['/home']" routerLinkActive="active" (click)="desLogar()"  class="btn-outline-success mr-3 btn-sm">Carrinho</button>
         <button [routerLink]="['/home']" routerLinkActive="active" (click)="desLogar()"  class="btn-outline-danger btn-sm">Sair</button>
       </form>
     </div>

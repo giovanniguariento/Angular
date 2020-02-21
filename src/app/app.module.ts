@@ -37,7 +37,6 @@ import { LoginComponent } from './login/login.component';
     ProdutosModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule
-    
   ],
   providers: [],
   bootstrap: [AppComponent]
