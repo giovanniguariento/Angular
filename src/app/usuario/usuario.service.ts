@@ -41,7 +41,7 @@ export class UsuarioService {
     return this.http.post(this.urlUsuario, obj);
   }
 
- 
+
   getDados() {
     return this.http.get(this.urlUsuario);
   }
@@ -50,13 +50,13 @@ export class UsuarioService {
     return this.http.delete(this.urlUsuario + id_usuario);
   }
 
-getOneUsuario (id_usuario) {
-  return this.http.get(this.urlUsuario + id_usuario);
-}
+  getOneUsuario(id_usuario) {
+    return this.http.get(this.urlUsuario + id_usuario);
+  }
 
-patchUsuario (id_usuario, obj) {
-  return this.http.post (this.urlUsuario + id_usuario, obj);
-}
+  patchUsuario(id_usuario, obj) {
+    return this.http.post(this.urlUsuario + id_usuario, obj);
+  }
 
 
   login(id_usuario, obj) {

@@ -1,6 +1,10 @@
-<p>ADM</p>
+
 <div class="container">
     <div class="row">
+        <div class=" float-right m-3">
+
+            <a class="btn btn-success" [routerLink]="['/produtos']">Novo Produto</a>
+        </div>
         <table class="table table-dark mt-5">
             <thead>
                 <tr>
@@ -15,12 +19,12 @@
 
             <tbody>
                 <tr *ngFor="let u of dados">
-                    <td>{{u.id }}</td>
+                    <td>{{ u.id }}</td>
                     <td>{{ u.nome }}</td>
                     <td>{{ u.descricao }}</td>
-                    <td>{{ u.preco }}</td>
-                    <td><button type="button" class="btn btn-danger btn-sm text-center ">Delete</button></td>
-                    <td><button type="button" class="btn btn-primary btn-sm text-center">Edit</button></td>
+                    <td>R$ {{ u.preco }}</td>
+                    <td><button type="button" (click)=deletar(u.id) class="btn btn-danger btn-sm text-center ">Delete</button></td>
+                    <td><button type="button" (click)=editar(u.id) class="btn btn-primary btn-sm text-center ">Edit</button></td>
                 </tr>
             </tbody>
         </table>

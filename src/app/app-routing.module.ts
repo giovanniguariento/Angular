@@ -1,3 +1,4 @@
+import { CartComponent } from './cart/cart/cart.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './shared/guards/auth-guard.service';
 import { NgModule, Component } from '@angular/core';
@@ -9,6 +10,7 @@ const routes: Routes = [
   {path:  '', component : HomeComponent },
   {path: 'home' , component : HomeComponent},
   {path: 'login' , component : LoginComponent},
+  {path: 'carrinho' , component : CartComponent},
   {path : 'usuarios',  loadChildren : () => import('./usuario/usuario.module')
       .then(m => m.UsuarioModule)},
   
