@@ -37,55 +37,7 @@ export class HomeComponent implements OnInit { textoFormulario: any;
 
     console.log(this.activatedRoute)
 
-    this.activatedRoute.params.subscribe(
-      (rota) => {
-        if (rota.id) {
-          console.log("edição");
-          this.textoBotao = "Atualizar";
-          this.textoH1 = "Atualizar Cadastro";
-          this.isEdicao = true;
-          this.idUsuario = rota.id;
-
-          this.usuarioService.getOneUsuario(rota.id).subscribe(
-            (response: any) => {
-              this.addprodutos.patchValue(
-                {
-                  cidadeInput: response.localidade,
-                  logradouroInput: response.logradouro,
-                  bairroInput: response.bairro,
-                  estadoInput: response.estado,
-                  nameInput: response.nome,
-                  senhaInput: response.senha,
-                  emailInput: response.email,
-                  cepInput: response.cep,
-                  numeroInput: response.numero,
-                  complementoInput: response.complemento
-                }
-              );
-            },
-          )
-        }
-        else{
-          this.textoBotao = "Cadastrar";
-          this.textoH1 = "Formulário de Cadastro";
-          console.log("criação");
-          this.isEdicao = false;
-        }
-      }
-    )
-    this.addprodutos = this.formBuilder.group({
-      nameInput: ['', []],
-      senhaInput: ['', []],
-      emailInput: ['', []],
-      cepInput: ['', []],
-      cidadeInput: ['', []],
-      logradouroInput: ['', []],
-      numeroInput: ['', []],
-      complementoInput: ['', []],
-      bairroInput: ['', []],
-      estadoInput: ['', []]
-    });
-
+   
   }
 
   onSubmit() {
@@ -94,11 +46,10 @@ export class HomeComponent implements OnInit { textoFormulario: any;
     console.log (this.isEdicao)
 
     let obj = {
-      nome: this.addprodutos.value.nameInput,
-      email: this.addprodutos.value.emailInput,
-      senha: this.addprodutos.value.senhaInput,
-      tipo_usuario: 1,
-      cep: this.addprodutos.value.cepInput
+      nome: this.addprodutos.value.nome,
+      preco: this.addprodutos.value.preco,
+      descricao: this.addprodutos.value.descricao,
+      tipo_usuario: 1
     }
     
     if ( this.isEdicao == false ){
@@ -106,9 +57,9 @@ export class HomeComponent implements OnInit { textoFormulario: any;
         (response: any) => {
   
           console.log(response);
-          this.toastr.success('Usuário inserido com sucesso!' + response.id);
+          this.toastr.success('produto inserido com sucesso! ' + response.id);
           this.limpar()
-          this.router.navigate(['/usuarios/usuario-list']);
+          this.router.navigate(['/admin/home']);
         },
       )
     }
@@ -117,8 +68,8 @@ export class HomeComponent implements OnInit { textoFormulario: any;
         (response: any) => {
   
           console.log(response);
-          this.toastr.success('Usuário atualizado com sucesso!' + response.id);
-          this.router.navigate(['/usuarios/usuario-list']);
+          this.toastr.success('Produto atualizado com sucesso! ' + response.id);
+          this.router.navigate(['/admin/home']);
         },
       );
     }

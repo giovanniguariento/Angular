@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { ProdutosRoutingModule } from './produtos-routing.module';
-import { ProdutosComponent } from './produtos/produtos.component';
+import { ProdutosComponent } from './produtos-form/produtos-form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ProdutosListComponent } from './produtos-list/produtos-list.component';
 

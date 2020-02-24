@@ -7,17 +7,23 @@ import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
-  {path:  '', component : HomeComponent },
-  {path: 'home' , component : HomeComponent},
-  {path: 'login' , component : LoginComponent},
-  {path: 'carrinho' , component : CartComponent},
-  {path : 'usuarios',  loadChildren : () => import('./usuario/usuario.module')
-      .then(m => m.UsuarioModule)},
-  
-  {path : 'admin', loadChildren : () => import('./admin/admin.module')
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'usuarios', loadChildren: () => import('./usuario/usuario.module')
+      .then(m => m.UsuarioModule)
+  },
+
+  {
+    path: 'admin', loadChildren: () => import('./admin/admin.module')
       .then(m => m.AdminModule),
-      canActivate : [ AuthGuardService ]
-}
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'produtos', loadChildren: () => import('./produtos/produtos.module')
+      .then(m => m.ProdutosModule)
+  }
 ];
 
 @NgModule({

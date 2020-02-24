@@ -1,4 +1,4 @@
-<h1 class="mt-4 mb-5 text-center">Cadastramento de Produtos</h1>
+<h1 class="mt-4 mb-5 text-center">{{ textoH1 }}</h1>
 
 <form [formGroup]="produtos" (submit)="onCadastrar()">
   <div class="form-row">
@@ -17,6 +17,6 @@
     <input type="text"class="form-control" placeholder="Descreva o produto" formControlName="descricao">
   </div>
 
-  <button type="submit" class="btn btn-block btn-primary">Cadastrar</button>
+  <button type="submit" class="btn btn-block btn-primary">{{ textoBotao}}</button>
 
 </form>

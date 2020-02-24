@@ -1,6 +1,6 @@
 import { browser } from 'protractor';
 import { ProdutosModule } from './produtos/produtos.module';
-import { ProdutosComponent } from './produtos/produtos/produtos.component';
+import { ProdutosComponent } from './produtos/produtos-form/produtos-form.component';
 import { PokemonModule } from './pokemon/pokemon.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -29,8 +29,6 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    PokemonModule,
-    ProdutosModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule
     

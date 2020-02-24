@@ -11,13 +11,6 @@
         <a class="nav-link" [routerLink]="['']" routerLinkActive="active">Inicio <span
             class="sr-only">(current)</span></a>
       </li>
-
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/usuarios/usuario-list']" routerLinkActive="active">Usuarios</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/carrinho']" routerLinkActive="active">Carrinho</a>
-      </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Login</a>
       </li>
@@ -38,11 +31,11 @@
           Produtos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" [routerLink]="['/produtos']">Cadastro de Produtos</a>
+          <a class="dropdown-item" [routerLink]="['/produtos/new']">Cadastro de Produtos</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" [routerLink]="['/produtos/produtos-list']">Lista de Produtos</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" [routerLink]="['/admin']">ADM</a>
+          <a class="dropdown-item" [routerLink]="['/admin/home']">Dashboard</a>
         </div>
       </li>
 
