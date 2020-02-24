@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 })
 export class MenuDataService {
   //grupo do whatsapp
-  menuDataService = new Subject<boolean>();
+  menuMessageBus = new Subject<boolean>();
 
   constructor() { }
 }

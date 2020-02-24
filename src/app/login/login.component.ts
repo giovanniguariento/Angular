@@ -1,3 +1,4 @@
+import { MenuDataService } from './../shared/services/menu-data.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './../shared/guards/login.service';
@@ -13,7 +14,12 @@ export class LoginComponent implements OnInit {
 
   meuForm: FormGroup;
 
-  constructor(private loginService: LoginService, private formBuilder: FormBuilder,private router : Router, private toastr : ToastrService) { 
+  constructor(
+    private loginService: LoginService,
+     private formBuilder: FormBuilder,
+     private router : Router, 
+     private toastr : ToastrService,
+     private menuDataService: MenuDataService) { 
     
     this.meuForm = this.formBuilder.group({
       usuario: ['', []],
@@ -24,8 +30,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    
   }
 
 
@@ -70,11 +74,9 @@ export class LoginComponent implements OnInit {
 
   }
 
-  verificarLogin() {
-
-
+  notificar(){
+    this.menuDataService.menuMessageBus.next(true);
   }
-
 
 
 }

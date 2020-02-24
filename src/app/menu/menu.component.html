@@ -11,18 +11,15 @@
         <a class="nav-link" [routerLink]="['']" routerLinkActive="active">Inicio <span
             class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Login</a>
-      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">
+          aria-expanded="false" [hidden]="!esconderbotao()">
           Clientes
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" [routerLink]="['/usuarios/']">Cadastro de Usuarios</a>
+          <a class="dropdown-item" [routerLink]="['/usuarios/']" [hidden]="!esconderbotao()" >Cadastro de Usuarios</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" [routerLink]="['/usuarios/usuario-list']"> Lista de Usuarios</a>
+          <a class="dropdown-item" [routerLink]="['/usuarios/usuario-list']" [hidden]="!esconderbotao()"> Lista de Usuarios</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -31,19 +28,22 @@
           Produtos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" [routerLink]="['/produtos/new']">Cadastro de Produtos</a>
+          <a class="dropdown-item" [routerLink]="['/produtos/new']" [hidden]="!esconderbotao()" >Cadastro de Produtos</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" [routerLink]="['/produtos/produtos-list']">Lista de Produtos</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" [routerLink]="['/admin/home']">Dashboard</a>
+          <a class="dropdown-item" [routerLink]="['/admin/home']" [hidden]="!esconderbotao()"> Dashboard</a>
         </div>
       </li>
 
     </ul>
 
-    <form class="form-inline my-2 my-lg-0">
-      <button [routerLink]="['/home']" routerLinkActive="active" (click)="desLogar()"
-        class="btn-outline-danger btn-sm">Sair</button>
-    </form>
+    <div class="">
+      <button [routerLink]="['/home']" routerLinkActive="active" (click)="desLogar()" class="btn btn-danger btn-sm mr-4">Sair</button>
+    </div>
+
+    <div class="">
+      <button [routerLink]="['/login']" routerLinkActive="active" class="btn btn-success btn-sm">Login</button>
+    </div>
   </div>
 </nav>
