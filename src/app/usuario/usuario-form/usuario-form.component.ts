@@ -14,7 +14,7 @@ export class UsuarioFormComponent implements OnInit {
   botaoFormulario: any;
   addusuarios: FormGroup;
 
-  usuarios: any = [];
+  //usuarios: any = [];
   offset: number = 0;
   limit: number = 10;
   mostrartexto = "Meu botão";

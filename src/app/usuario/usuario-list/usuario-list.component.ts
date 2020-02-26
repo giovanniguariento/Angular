@@ -1,3 +1,4 @@
+import { UsuarioModel } from './../../shared/models/usuario.model';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsuarioService } from './../usuario.service';
@@ -10,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsuarioListComponent implements OnInit {
 
-  dados: any = [];
+  dados: UsuarioModel[] = [];
 
   constructor(private usuarioService: UsuarioService, private toastr : ToastrService, private router : Router) { }
 

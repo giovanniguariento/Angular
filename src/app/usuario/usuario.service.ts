@@ -1,6 +1,7 @@
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UsuarioModel } from '../shared/models/usuario.model';
 
 
 @Injectable({
@@ -43,7 +44,7 @@ export class UsuarioService {
 
 
   getDados() {
-    return this.http.get(this.urlUsuario);
+    return this.http.get<UsuarioModel[]>(this.urlUsuario);
   }
 
   deleteDados(id_usuario) {
