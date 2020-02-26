@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-show-erros',
   templateUrl: './show-erros.component.html',
-  styleUrls: ['./show-erros.component.css']
+  styleUrls: ['./show-erros.component.scss']
 })
 export class ShowErrosComponent implements OnInit {
 

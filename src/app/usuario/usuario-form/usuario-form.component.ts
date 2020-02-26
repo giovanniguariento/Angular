@@ -8,7 +8,7 @@ import { UsuarioModel } from 'src/app/shared/models/usuario.model';
 @Component({
   selector: 'app-usuario-form',
   templateUrl: './usuario-form.component.html',
-  styleUrls: ['./usuario-form.component.css']
+  styleUrls: ['./usuario-form.component.scss']
 })
 export class UsuarioFormComponent implements OnInit {
   textoFormulario: any;
@@ -112,7 +112,7 @@ export class UsuarioFormComponent implements OnInit {
     console.log(this.addusuarios);
 
     console.log(this.isEdicao);
-    
+
     this.usuario = Object.assign({}, this.addusuarios.value.usuario);
 
     if (this.isEdicao == false) {
@@ -179,3 +179,5 @@ export class UsuarioFormComponent implements OnInit {
 
 
 }
+
+

@@ -13,7 +13,7 @@ import {
 @Component({
   selector: "app-ciclo",
   templateUrl: "./ciclo.component.html",
-  styleUrls: ["./ciclo.component.css"]
+  styleUrls: ["./ciclo.component.scss"]
 })
 export class CicloComponent
   implements
