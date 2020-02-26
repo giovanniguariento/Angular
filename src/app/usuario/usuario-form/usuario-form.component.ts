@@ -1,8 +1,9 @@
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../usuario.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
+import { UsuarioModel } from 'src/app/shared/models/usuario.model';
 
 @Component({
   selector: 'app-usuario-form',
@@ -14,6 +15,8 @@ export class UsuarioFormComponent implements OnInit {
   botaoFormulario: any;
   addusuarios: FormGroup;
 
+  usuario: UsuarioModel;
+
   //usuarios: any = [];
   offset: number = 0;
   limit: number = 10;
@@ -24,12 +27,11 @@ export class UsuarioFormComponent implements OnInit {
   endereco: any = [];
   isEdicao = false;
   idUsuario = 0;
-  textoH1: any = ' ' ; 
-  textoBotao:  any = ' ';
+  textoH1: any = ' ';
+  textoBotao: any = ' ';
 
   constructor(
     private usuarioService: UsuarioService,
-    private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private router: Router,
     private activatedRoute: ActivatedRoute
@@ -37,6 +39,22 @@ export class UsuarioFormComponent implements OnInit {
   ) {
 
     console.log(this.activatedRoute)
+
+    this.addusuarios = new FormGroup({
+
+      usuario: new FormGroup({
+        nome: new FormControl(''),
+        senha: new FormControl(''),
+        email: new FormControl(''),
+        cep: new FormControl(''),
+        cidade: new FormControl(''),
+        numero: new FormControl(''),
+        complemento: new FormControl(''),
+        bairro: new FormControl(''),
+        logradouro: new FormControl(''),
+        estado: new FormControl('')
+      })
+    });
 
     this.activatedRoute.params.subscribe(
       (rota) => {
@@ -48,44 +66,23 @@ export class UsuarioFormComponent implements OnInit {
           this.idUsuario = rota.id;
 
           this.usuarioService.getOneUsuario(rota.id).subscribe(
-            (response: any) => {
-              this.addusuarios.patchValue(
-                {
-                  cidadeInput: response.localidade,
-                  logradouroInput: response.logradouro,
-                  bairroInput: response.bairro,
-                  estadoInput: response.estado,
-                  nameInput: response.nome,
-                  senhaInput: response.senha,
-                  emailInput: response.email,
-                  cepInput: response.cep,
-                  numeroInput: response.numero,
-                  complementoInput: response.complemento
-                }
-              );
+            (response: UsuarioModel) => {
+              this.usuario = response;
+              this.addusuarios.patchValue({ usuario: this.usuario });
             },
-          )
+            (error) => {
+
+            },
+          );
         }
-        else{
+        else {
           this.textoBotao = "Cadastrar";
           this.textoH1 = "Formulário de Cadastro";
           console.log("criação");
           this.isEdicao = false;
         }
       }
-    )
-    this.addusuarios = this.formBuilder.group({
-      nameInput: ['', []],
-      senhaInput: ['', []],
-      emailInput: ['', []],
-      cepInput: ['', []],
-      cidadeInput: ['', []],
-      logradouroInput: ['', []],
-      numeroInput: ['', []],
-      complementoInput: ['', []],
-      bairroInput: ['', []],
-      estadoInput: ['', []]
-    });
+    );
 
   }
 
@@ -95,43 +92,33 @@ export class UsuarioFormComponent implements OnInit {
     this.usuarioService.getCep(this.cep).subscribe(
       (response: any) => {
         console.log(response);
-        this.addusuarios.patchValue(
-          {
-            cidadeInput: response.localidade,
-            logradouroInput: response.logradouro,
-            bairroInput: response.bairro,
-            estadoInput: response.estado
-          }
-        )
-        this.endereco = response;
-      },
+        let obj = {
+          cidade: response.localidade,
+          logradouro: response.logradouro,
+          bairro: response.bairro,
+          estado: response.uf,
+          cep: response.cep
+        }
 
+        this.addusuarios.patchValue( { usuario : obj }  );
+      },
+      (error) => {
+        console.log(error);
+      }
     );
   }
 
   onSubmit() {
     console.log(this.addusuarios);
 
-    console.log (this.isEdicao)
-
-    let obj = {
-      nome: this.addusuarios.value.nameInput,
-      email: this.addusuarios.value.emailInput,
-      senha: this.addusuarios.value.senhaInput,
-      tipo_usuario: 1,
-      cep: this.addusuarios.value.cepInput,
-      logradouro: this.addusuarios.value.logradouroInput,
-      numero: this.addusuarios.value.numeroInput,
-      complemento: this.addusuarios.value.complementoInput,
-      cidade: this.addusuarios.value.cidadeInput,
-      bairro: this.addusuarios.value.bairroInput,
-      estado: this.addusuarios.value.estadoInput
-    }
+    console.log(this.isEdicao);
     
-    if ( this.isEdicao == false ){
-      this.usuarioService.postDados(obj).subscribe(
+    this.usuario = Object.assign({}, this.addusuarios.value.usuario);
+
+    if (this.isEdicao == false) {
+      this.usuarioService.postDados(this.usuario).subscribe(
         (response: any) => {
-  
+
           console.log(response);
           this.toastr.success('Usuário inserido com sucesso!' + response.id);
           this.limpar()
@@ -140,16 +127,16 @@ export class UsuarioFormComponent implements OnInit {
       )
     }
     else {
-      this.usuarioService.patchUsuario(this.idUsuario, obj).subscribe(
+      this.usuarioService.patchUsuario(this.idUsuario, this.usuario).subscribe(
         (response: any) => {
-  
+
           console.log(response);
           this.toastr.success('Usuário atualizado com sucesso!' + response.id);
           this.router.navigate(['/usuarios/usuario-list']);
         },
       );
     }
-    
+
 
   }
 
@@ -181,7 +168,7 @@ export class UsuarioFormComponent implements OnInit {
 
     this.addusuarios.patchValue(obj)
   }
-  
+
 
   //poderia ser assim! this.ishabilitado = !this.isHabilitado!
 

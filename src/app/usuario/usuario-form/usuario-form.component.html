@@ -1,56 +1,56 @@
 <h1 class="mt-4 text-center">{{ textoH1 }}</h1>
 
 <form class="mb-3" [formGroup]="addusuarios" (submit)="onSubmit()">
-  <div class="form-row mt-5">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Nome</label>
-      <input type="text" class="form-control" placeholder="Nome" formControlName="nameInput" >
+  <div formGroupName="usuario">
+    <div class="form-row mt-5">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Nome</label>
+        <input type="text" class="form-control" placeholder="Nome" formControlName="nome">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Senha</label>
+        <input type="password" class="form-control" placeholder="Password" formControlName="senha">
+      </div>
     </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Senha</label>
-      <input type="password" class="form-control" placeholder="Password" formControlName="senhaInput">
+    <div class="form-group">
+      <label for="inputAddress">Email</label>
+      <input type="text" class="form-control" placeholder="Email" formControlName="email">
     </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputZip">CEP</label>
+        <input type="text" class="form-control" formControlName="cep" placeholder="Coloque o Seu Código Postal"
+          #pegacep (blur)="getEndereco(pegacep.value)">
+      </div>
+      <div class="form-group col-md-8">
+        <label for="inputPassword4">Cidade</label>
+        <input type="text" class="form-control" placeholder="São Paulo" formControlName="cidade">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Logradouro</label>
+        <input type="text" class="form-control" placeholder="Nome da Rua" formControlName="logradouro">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputEmail4">Número</label>
+        <input type="number" class="form-control" placeholder="Número da Casa" formControlName="numero">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputEmail4">Complemento</label>
+        <input type="text" class="form-control" placeholder="Complemento" formControlName="complemento">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label for="inputEmail4">Bairro</label>
+        <input type="text" class="form-control" placeholder="Bairro" formControlName="bairro">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputPassword4">Estado</label>
+        <input type="text" class="form-control" placeholder="SP" formControlName="estado">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-block btn-primary">{{ textoBotao}}</button>
   </div>
-  <div class="form-group">
-    <label for="inputAddress">Email</label>
-    <input type="text" class="form-control" placeholder="Email" formControlName="emailInput">
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-4">
-      <label for="inputZip">CEP</label>
-      <input type="text" class="form-control" formControlName="cepInput" placeholder="Coloque o Seu Código Postal"
-        #pegacep (blur)="getEndereco(pegacep.value)">
-    </div>
-    <div class="form-group col-md-8">
-      <label for="inputPassword4">Cidade</label>
-      <input type="text" class="form-control" placeholder="São Paulo" formControlName="cidadeInput">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Logradouro</label>
-      <input type="text" class="form-control" placeholder="Nome da Rua" formControlName="logradouroInput">
-    </div>
-    <div class="form-group col-md-2">
-      <label for="inputEmail4">Número</label>
-      <input type="number" class="form-control" placeholder="Número da Casa" formControlName="numeroInput">
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputEmail4">Complemento</label>
-      <input type="text" class="form-control" placeholder="Complemento" formControlName="complementoInput">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-8">
-      <label for="inputEmail4">Bairro</label>
-      <input type="text" class="form-control" placeholder="Bairro" formControlName="bairroInput">
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputPassword4">Estado</label>
-      <input type="text" class="form-control" placeholder="SP" formControlName="estadoInput">
-    </div>
-  </div>
-  
-
-  <button type="submit" class="btn btn-block btn-primary">{{ textoBotao}}</button>
 </form>

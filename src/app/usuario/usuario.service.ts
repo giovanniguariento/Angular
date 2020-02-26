@@ -2,6 +2,7 @@ import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioModel } from '../shared/models/usuario.model';
+import { UsuarioModule } from './usuario.module';
 
 
 @Injectable({
@@ -52,7 +53,7 @@ export class UsuarioService {
   }
 
   getOneUsuario(id_usuario) {
-    return this.http.get(this.urlUsuario + id_usuario);
+    return this.http.get<UsuarioModel>(this.urlUsuario + id_usuario);
   }
 
   patchUsuario(id_usuario, obj) {
