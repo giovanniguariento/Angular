@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
         
 
         if (success == true) {
-          this.router.navigate(['/admin/home'])
+          this.router.navigate(['produtos/list-adm'])
           this.toastr.success('Logado com Sucesso!')
           //this.router.navigate(['admin/home']);
         }

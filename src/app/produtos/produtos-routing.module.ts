@@ -9,12 +9,13 @@ import { ListaAdmComponent } from './lista-adm/lista-adm.component';
 
 
 const routes: Routes = [
-  {path : 'produtos', component : ProdutosComponent},
-  {path : 'produtos/list', component : ListarProdutosComponent},
+  {path : '', component : ProdutosComponent},
+  {path : 'list', component : ListarProdutosComponent},
   {path : 'edit/:id', component : ProdutosComponent},
-  {path : 'produtos/list-adm', component : ListaAdmComponent,
+  {path : 'list-adm', component : ListaAdmComponent,
       canActivate : [ AuthGuardService ]},
-  {path : 'produtos/carrinho', component : CarrinhoComponent}
+  {path : 'carrinho', component : CarrinhoComponent} 
+  
 
   
 ];

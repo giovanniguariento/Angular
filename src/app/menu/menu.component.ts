@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit {
       (success) => {
         console.log ('subject' , success);
         this.isBotaoAdm = success;
-        this.ref.nativeElement.hidden = this.isBotaoAdm;
+        this.ref.nativeElement.hidden = this.isBotaoAdm; 
       }
     );
 

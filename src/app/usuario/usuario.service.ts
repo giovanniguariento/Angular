@@ -1,6 +1,8 @@
+import { UsuarioModule } from './usuario.module';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UsuarioModel } from '../shared/models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +41,7 @@ export class UsuarioService {
   }
 
   getDados () {  
-    return this.http.get(this.url);
+    return this.http.get<UsuarioModel[]>( this.url );
   }
 
   deleteDados (id_usuario) {
@@ -47,7 +49,7 @@ export class UsuarioService {
   }
 
 getOneUsuario (id_usuario) {
-  return this.http.get(this.url + id_usuario);
+  return this.http.get <UsuarioModel> (this.url + id_usuario);
 }
 
 patchUsuario (id_usuario, obj) {
